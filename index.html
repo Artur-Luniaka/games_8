@@ -26,52 +26,52 @@
         <div class="hero-background">
           <div class="hero-collage">
             <img
-              src="assets/images/hero/game1.jpg"
+              src="assets/images/game1.jpg"
               alt="Cyberpunk 2077"
               class="hero-image hero-image-1"
             />
             <img
-              src="assets/images/hero/game2.jpg"
+              src="assets/images/game2.jpg"
               alt="Elden Ring"
               class="hero-image hero-image-2"
             />
             <img
-              src="assets/images/hero/game3.jpg"
+              src="assets/images/game3.jpg"
               alt="God of War"
               class="hero-image hero-image-3"
             />
             <img
-              src="assets/images/hero/game4.jpg"
+              src="assets/images/game4.jpg"
               alt="Red Dead Redemption 2"
               class="hero-image hero-image-4"
             />
             <img
-              src="assets/images/hero/game5.jpg"
+              src="assets/images/game5.jpg"
               alt="The Witcher 3"
               class="hero-image hero-image-5"
             />
             <img
-              src="assets/images/hero/game6.jpg"
+              src="assets/images/game6.jpg"
               alt="Assassin's Creed"
               class="hero-image hero-image-6"
             />
             <img
-              src="assets/images/hero/game7.jpg"
+              src="assets/images/game7.jpg"
               alt="Call of Duty"
               class="hero-image hero-image-7"
             />
             <img
-              src="assets/images/hero/game8.jpg"
+              src="assets/images/game8.jpg"
               alt="FIFA 24"
               class="hero-image hero-image-8"
             />
             <img
-              src="assets/images/hero/game9.jpg"
+              src="assets/images/game9.jpg"
               alt="GTA V"
               class="hero-image hero-image-9"
             />
             <img
-              src="assets/images/hero/game10.jpg"
+              src="assets/images/game10.jpg"
               alt="Minecraft"
               class="hero-image hero-image-10"
             />
@@ -101,67 +101,311 @@
         </div>
       </section>
 
-      <section id="featured-games" class="content-section">
+      <!-- Hot Deals Section -->
+      <section id="hot-deals" class="hot-deals-section">
         <div class="section-container">
           <div class="section-header">
-            <h2 class="section-title">Featured Titles</h2>
-            <p class="section-subtitle">
-              Handpicked games that define excellence
+            <div class="header-content">
+              <h2 class="section-title">🔥 HOT DEALS</h2>
+              <p class="section-subtitle">
+                Limited time offers on premium PC & Xbox games
+              </p>
+            </div>
+          </div>
+          <div id="hot-deals-grid" class="hot-deals-grid"></div>
+        </div>
+      </section>
+
+      <!-- Game Universe Explorer -->
+      <section id="universe-explorer" class="universe-section">
+        <div class="section-container">
+          <div class="universe-header">
+            <h2 class="universe-title">🌌 GAME UNIVERSE EXPLORER</h2>
+            <p class="universe-subtitle">
+              Navigate through infinite gaming dimensions
             </p>
           </div>
-          <div id="featured-games-grid" class="games-grid"></div>
-        </div>
-      </section>
-
-      <section id="categories-section" class="content-section">
-        <div class="section-container">
-          <div class="section-header">
-            <h2 class="section-title">Game Categories</h2>
-            <p class="section-subtitle">Find your perfect adventure</p>
-          </div>
-          <div id="categories-grid" class="categories-grid"></div>
-        </div>
-      </section>
-
-      <section id="trending-section" class="content-section">
-        <div class="section-container">
-          <div class="section-header">
-            <h2 class="section-title">Trending Now</h2>
-            <p class="section-subtitle">What gamers are playing</p>
-          </div>
-          <div id="trending-games" class="trending-carousel"></div>
-        </div>
-      </section>
-
-      <section id="newsletter-section" class="content-section">
-        <div class="section-container">
-          <div class="newsletter-content">
-            <h2 class="newsletter-title">Stay in the Loop</h2>
-            <p class="newsletter-description">
-              Get exclusive deals and gaming news delivered to your inbox
-            </p>
-            <form id="newsletter-form" class="newsletter-form">
-              <div class="form-group">
-                <input
-                  type="email"
-                  id="newsletter-email"
-                  placeholder="Enter your email"
-                  required
-                />
-                <button type="submit" class="newsletter-btn">Subscribe</button>
+          <div class="universe-grid">
+            <div class="dimension-card" data-dimension="action">
+              <div class="dimension-portal">
+                <div class="portal-ring"></div>
+                <div class="portal-core"></div>
               </div>
-            </form>
+              <h3>Action Dimension</h3>
+              <p>High-octane adventures await</p>
+              <div class="dimension-stats">
+                <span>127 Games</span>
+                <span>4.8★</span>
+              </div>
+            </div>
+            <div class="dimension-card" data-dimension="rpg">
+              <div class="dimension-portal">
+                <div class="portal-ring"></div>
+                <div class="portal-core"></div>
+              </div>
+              <h3>RPG Realm</h3>
+              <p>Epic quests and character growth</p>
+              <div class="dimension-stats">
+                <span>89 Games</span>
+                <span>4.9★</span>
+              </div>
+            </div>
+            <div class="dimension-card" data-dimension="strategy">
+              <div class="dimension-portal">
+                <div class="portal-ring"></div>
+                <div class="portal-core"></div>
+              </div>
+              <h3>Strategy Nexus</h3>
+              <p>Master the art of tactical warfare</p>
+              <div class="dimension-stats">
+                <span>64 Games</span>
+                <span>4.7★</span>
+              </div>
+            </div>
+            <div class="dimension-card" data-dimension="adventure">
+              <div class="dimension-portal">
+                <div class="portal-ring"></div>
+                <div class="portal-core"></div>
+              </div>
+              <h3>Adventure Zone</h3>
+              <p>Discover hidden worlds and secrets</p>
+              <div class="dimension-stats">
+                <span>156 Games</span>
+                <span>4.6★</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="testimonials-section" class="content-section">
+      <!-- Gaming Pulse -->
+      <section id="gaming-pulse" class="pulse-section">
         <div class="section-container">
-          <div class="section-header">
-            <h2 class="section-title">Gamer Reviews</h2>
-            <p class="section-subtitle">Real experiences from our community</p>
+          <div class="pulse-header">
+            <h2 class="pulse-title">💓 GAMING PULSE</h2>
+            <p class="pulse-subtitle">
+              Real-time gaming heartbeat of the community
+            </p>
           </div>
-          <div id="testimonials-grid" class="testimonials-grid"></div>
+          <div class="pulse-grid">
+            <div class="pulse-card trending">
+              <div class="pulse-indicator"></div>
+              <div class="pulse-content">
+                <h3>🔥 Trending Now</h3>
+                <div class="pulse-games">
+                  <div class="pulse-game">
+                    <span class="game-rank">#1</span>
+                    <span class="game-name">Cyberpunk 2077</span>
+                    <span class="pulse-rate">+127%</span>
+                  </div>
+                  <div class="pulse-game">
+                    <span class="game-rank">#2</span>
+                    <span class="game-name">Elden Ring</span>
+                    <span class="pulse-rate">+89%</span>
+                  </div>
+                  <div class="pulse-game">
+                    <span class="game-rank">#3</span>
+                    <span class="game-name">God of War</span>
+                    <span class="pulse-rate">+67%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pulse-card emerging">
+              <div class="pulse-indicator"></div>
+              <div class="pulse-content">
+                <h3>⭐ Emerging Stars</h3>
+                <div class="pulse-games">
+                  <div class="pulse-game">
+                    <span class="game-rank">#1</span>
+                    <span class="game-name">Hogwarts Legacy</span>
+                    <span class="pulse-rate">+234%</span>
+                  </div>
+                  <div class="pulse-game">
+                    <span class="game-rank">#2</span>
+                    <span class="game-name">Starfield</span>
+                    <span class="pulse-rate">+189%</span>
+                  </div>
+                  <div class="pulse-game">
+                    <span class="game-rank">#3</span>
+                    <span class="game-name">Baldur's Gate 3</span>
+                    <span class="pulse-rate">+156%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pulse-card classic">
+              <div class="pulse-indicator"></div>
+              <div class="pulse-content">
+                <h3>👑 Classic Legends</h3>
+                <div class="pulse-games">
+                  <div class="pulse-game">
+                    <span class="game-rank">#1</span>
+                    <span class="game-name">The Witcher 3</span>
+                    <span class="pulse-rate">+45%</span>
+                  </div>
+                  <div class="pulse-game">
+                    <span class="game-rank">#2</span>
+                    <span class="game-name">Skyrim</span>
+                    <span class="pulse-rate">+38%</span>
+                  </div>
+                  <div class="pulse-game">
+                    <span class="game-rank">#3</span>
+                    <span class="game-name">GTA V</span>
+                    <span class="pulse-rate">+32%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Digital Arsenal -->
+      <section id="digital-arsenal" class="arsenal-section">
+        <div class="section-container">
+          <div class="arsenal-header">
+            <h2 class="arsenal-title">⚔️ DIGITAL ARSENAL</h2>
+            <p class="arsenal-subtitle">
+              Your ultimate collection of gaming masterpieces
+            </p>
+          </div>
+          <div class="arsenal-showcase">
+            <div class="arsenal-category">
+              <div class="category-icon">🎯</div>
+              <h3>Precision Collection</h3>
+              <p>Games that demand skill and strategy</p>
+              <div class="arsenal-count">47 Titles</div>
+            </div>
+            <div class="arsenal-category">
+              <div class="category-icon">🌟</div>
+              <h3>Epic Sagas</h3>
+              <p>Stories that span generations</p>
+              <div class="arsenal-count">23 Series</div>
+            </div>
+            <div class="arsenal-category">
+              <div class="category-icon">🚀</div>
+              <h3>Future Tech</h3>
+              <p>Next-gen gaming experiences</p>
+              <div class="arsenal-count">34 Games</div>
+            </div>
+            <div class="arsenal-category">
+              <div class="category-icon">🎨</div>
+              <h3>Artistic Visions</h3>
+              <p>Visually stunning masterpieces</p>
+              <div class="arsenal-count">28 Titles</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Neural Network -->
+      <section id="neural-network" class="neural-section">
+        <div class="section-container">
+          <div class="neural-header">
+            <h2 class="neural-title">🧠 NEURAL NETWORK</h2>
+            <p class="neural-subtitle">
+              AI-powered gaming recommendations just for you
+            </p>
+          </div>
+          <div class="neural-interface">
+            <div class="neural-node main-node">
+              <div class="node-pulse"></div>
+              <span>Your Gaming DNA</span>
+            </div>
+            <div class="neural-connections">
+              <div class="connection-line"></div>
+              <div class="connection-line"></div>
+              <div class="connection-line"></div>
+            </div>
+            <div class="neural-recommendations">
+              <div class="recommendation-card">
+                <div class="rec-score">98%</div>
+                <h4>Perfect Match</h4>
+                <p>Based on your love for RPGs</p>
+              </div>
+              <div class="recommendation-card">
+                <div class="rec-score">87%</div>
+                <h4>Hidden Gem</h4>
+                <p>Similar to your favorites</p>
+              </div>
+              <div class="recommendation-card">
+                <div class="rec-score">76%</div>
+                <h4>Trending Pick</h4>
+                <p>Community favorite</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials Section -->
+      <section id="testimonials-section" class="testimonials-section">
+        <div class="section-container">
+          <div class="testimonials-header">
+            <h2 class="testimonials-title">🎮 GAMER MATRIX</h2>
+            <p class="testimonials-subtitle">
+              Digital consciousness of our gaming community
+            </p>
+          </div>
+          <div class="matrix-grid">
+            <div class="matrix-node" data-rating="5">
+              <div class="node-avatar">
+                <div class="avatar-pulse"></div>
+                <span>G</span>
+              </div>
+              <div class="node-content">
+                <h4>GamingMaster</h4>
+                <p>
+                  "PixelVault transformed my gaming experience. The deals are
+                  insane!"
+                </p>
+                <div class="rating-stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="matrix-node" data-rating="5">
+              <div class="node-avatar">
+                <div class="avatar-pulse"></div>
+                <span>P</span>
+              </div>
+              <div class="node-content">
+                <h4>ProGamer</h4>
+                <p>
+                  "Best selection of PC games I've ever seen. Instant
+                  downloads!"
+                </p>
+                <div class="rating-stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="matrix-node" data-rating="4">
+              <div class="node-avatar">
+                <div class="avatar-pulse"></div>
+                <span>X</span>
+              </div>
+              <div class="node-content">
+                <h4>XboxWarrior</h4>
+                <p>
+                  "Xbox collection is top-notch. Great prices and fast
+                  delivery."
+                </p>
+                <div class="rating-stars">★★★★☆</div>
+              </div>
+            </div>
+            <div class="matrix-node" data-rating="5">
+              <div class="node-avatar">
+                <div class="avatar-pulse"></div>
+                <span>D</span>
+              </div>
+              <div class="node-content">
+                <h4>DigitalNomad</h4>
+                <p>
+                  "Customer service is incredible. They really care about
+                  gamers!"
+                </p>
+                <div class="rating-stars">★★★★★</div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>

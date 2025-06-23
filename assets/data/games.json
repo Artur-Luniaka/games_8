@@ -14,11 +14,11 @@
       "releaseDate": "2023-09-26",
       "developer": "CD Projekt Red",
       "publisher": "CD Projekt",
-      "image": "assets/images/games/cyberpunk-2077.jpg",
+      "image": "assets/images/cyberpunk-2077.jpg",
       "gallery": [
-        "assets/images/games/cyberpunk-2077-1.jpg",
-        "assets/images/games/cyberpunk-2077-2.jpg",
-        "assets/images/games/cyberpunk-2077-3.jpg"
+        "assets/images/cyberpunk-2077-1.jpg",
+        "assets/images/cyberpunk-2077-2.jpg",
+        "assets/images/cyberpunk-2077-3.jpg"
       ],
       "features": [
         "Open-world RPG",
@@ -62,11 +62,11 @@
       "releaseDate": "2024-06-21",
       "developer": "FromSoftware",
       "publisher": "Bandai Namco",
-      "image": "assets/images/games/elden-ring.jpg",
+      "image": "assets/images/elden-ring.jpg",
       "gallery": [
-        "assets/images/games/elden-ring-1.jpg",
-        "assets/images/games/elden-ring-2.jpg",
-        "assets/images/games/elden-ring-3.jpg"
+        "assets/images/elden-ring-1.jpg",
+        "assets/images/elden-ring-2.jpg",
+        "assets/images/elden-ring-3.jpg"
       ],
       "features": [
         "Open-world action RPG",
@@ -116,11 +116,11 @@
       "releaseDate": "2024-01-15",
       "developer": "Santa Monica Studio",
       "publisher": "Sony Interactive Entertainment",
-      "image": "assets/images/games/god-of-war-ragnarok.jpg",
+      "image": "assets/images/god-of-war-ragnarok.jpg",
       "gallery": [
-        "assets/images/games/god-of-war-ragnarok-1.jpg",
-        "assets/images/games/god-of-war-ragnarok-2.jpg",
-        "assets/images/games/god-of-war-ragnarok-3.jpg"
+        "assets/images/god-of-war-ragnarok-1.jpg",
+        "assets/images/god-of-war-ragnarok-2.jpg",
+        "assets/images/god-of-war-ragnarok-3.jpg"
       ],
       "features": [
         "Epic action combat",
@@ -164,11 +164,11 @@
       "releaseDate": "2019-12-05",
       "developer": "Rockstar Games",
       "publisher": "Rockstar Games",
-      "image": "assets/images/games/red-dead-redemption-2.jpg",
+      "image": "assets/images/red-dead-redemption-2.jpg",
       "gallery": [
-        "assets/images/games/red-dead-redemption-2-1.jpg",
-        "assets/images/games/red-dead-redemption-2-2.jpg",
-        "assets/images/games/red-dead-redemption-2-3.jpg"
+        "assets/images/red-dead-redemption-2-1.jpg",
+        "assets/images/red-dead-redemption-2-2.jpg",
+        "assets/images/red-dead-redemption-2-3.jpg"
       ],
       "features": [
         "Open-world western",
@@ -212,11 +212,11 @@
       "releaseDate": "2015-05-19",
       "developer": "CD Projekt Red",
       "publisher": "CD Projekt",
-      "image": "assets/images/games/the-witcher-3.jpg",
+      "image": "assets/images/the-witcher-3.jpg",
       "gallery": [
-        "assets/images/games/the-witcher-3-1.jpg",
-        "assets/images/games/the-witcher-3-2.jpg",
-        "assets/images/games/the-witcher-3-3.jpg"
+        "assets/images/the-witcher-3-1.jpg",
+        "assets/images/the-witcher-3-2.jpg",
+        "assets/images/the-witcher-3-3.jpg"
       ],
       "features": [
         "Open-world RPG",
@@ -259,18 +259,18 @@
       "description": "Experience the story of Basim, a cunning street thief with nightmarish visions, seeking answers and justice.",
       "genre": "Action Adventure",
       "platforms": ["PC", "Xbox"],
-      "price": 44.99,
+      "price": 49.99,
       "originalPrice": 59.99,
-      "discount": 25,
+      "discount": 17,
       "rating": 4.3,
       "releaseDate": "2023-10-05",
-      "developer": "Ubisoft",
+      "developer": "Ubisoft Bordeaux",
       "publisher": "Ubisoft",
-      "image": "assets/images/games/assassins-creed-mirage.jpg",
+      "image": "assets/images/assassins-creed-mirage.jpg",
       "gallery": [
-        "assets/images/games/assassins-creed-mirage-1.jpg",
-        "assets/images/games/assassins-creed-mirage-2.jpg",
-        "assets/images/games/assassins-creed-mirage-3.jpg"
+        "assets/images/assassins-creed-mirage-1.jpg",
+        "assets/images/assassins-creed-mirage-2.jpg",
+        "assets/images/assassins-creed-mirage-3.jpg"
       ],
       "features": [
         "Stealth gameplay",
@@ -301,24 +301,24 @@
       "isOnSale": true
     },
     {
-      "id": "call-of-duty-modern-warfare-3",
+      "id": "call-of-duty-mw3",
       "title": "Call of Duty: Modern Warfare III",
       "subtitle": "Vault Edition",
-      "description": "The most advanced Call of Duty ever created. The game will feature the first-ever open world Zombies experience.",
+      "description": "The most advanced Call of Duty ever created, featuring cutting-edge technology and unprecedented gameplay.",
       "genre": "FPS",
       "platforms": ["PC", "Xbox"],
-      "price": 54.99,
+      "price": 69.99,
       "originalPrice": 69.99,
-      "discount": 21,
+      "discount": 0,
       "rating": 4.1,
       "releaseDate": "2023-11-10",
       "developer": "Sledgehammer Games",
       "publisher": "Activision",
-      "image": "assets/images/games/call-of-duty-mw3.jpg",
+      "image": "assets/images/call-of-duty-mw3.jpg",
       "gallery": [
-        "assets/images/games/call-of-duty-mw3-1.jpg",
-        "assets/images/games/call-of-duty-mw3-2.jpg",
-        "assets/images/games/call-of-duty-mw3-3.jpg"
+        "assets/images/call-of-duty-mw3-1.jpg",
+        "assets/images/call-of-duty-mw3-2.jpg",
+        "assets/images/call-of-duty-mw3-3.jpg"
       ],
       "features": [
         "Multiplayer FPS",
@@ -355,18 +355,18 @@
       "description": "Experience the beautiful game with the most realistic football simulation ever created.",
       "genre": "Sports",
       "platforms": ["PC", "Xbox"],
-      "price": 49.99,
+      "price": 59.99,
       "originalPrice": 69.99,
-      "discount": 29,
+      "discount": 14,
       "rating": 4.0,
       "releaseDate": "2023-09-29",
       "developer": "EA Sports",
       "publisher": "Electronic Arts",
-      "image": "assets/images/games/fifa-24.jpg",
+      "image": "assets/images/fifa-24.jpg",
       "gallery": [
-        "assets/images/games/fifa-24-1.jpg",
-        "assets/images/games/fifa-24-2.jpg",
-        "assets/images/games/fifa-24-3.jpg"
+        "assets/images/fifa-24-1.jpg",
+        "assets/images/fifa-24-2.jpg",
+        "assets/images/fifa-24-3.jpg"
       ],
       "features": [
         "Football simulation",
@@ -400,21 +400,21 @@
       "id": "gta-v",
       "title": "Grand Theft Auto V",
       "subtitle": "Premium Edition",
-      "description": "Los Santos: a sprawling sun-soaked metropolis full of self-help gurus, starlets and fading celebrities.",
+      "description": "Experience Los Santos and Blaine County in the most complete version of the game ever created.",
       "genre": "Action Adventure",
       "platforms": ["PC", "Xbox"],
       "price": 19.99,
       "originalPrice": 29.99,
       "discount": 33,
-      "rating": 4.5,
+      "rating": 4.6,
       "releaseDate": "2013-09-17",
       "developer": "Rockstar North",
       "publisher": "Rockstar Games",
-      "image": "assets/images/games/gta-v.jpg",
+      "image": "assets/images/gta-v.jpg",
       "gallery": [
-        "assets/images/games/gta-v-1.jpg",
-        "assets/images/games/gta-v-2.jpg",
-        "assets/images/games/gta-v-3.jpg"
+        "assets/images/gta-v-1.jpg",
+        "assets/images/gta-v-2.jpg",
+        "assets/images/gta-v-3.jpg"
       ],
       "features": [
         "Open-world action",
@@ -448,7 +448,7 @@
       "id": "minecraft",
       "title": "Minecraft",
       "subtitle": "Java & Bedrock Edition",
-      "description": "Create, explore and survive! The world is your canvas and the ground beneath your feet is your paint.",
+      "description": "Create, explore and survive in a world made entirely of blocks. The possibilities are endless.",
       "genre": "Sandbox",
       "platforms": ["PC", "Xbox"],
       "price": 26.95,
@@ -458,11 +458,11 @@
       "releaseDate": "2011-11-18",
       "developer": "Mojang Studios",
       "publisher": "Microsoft",
-      "image": "assets/images/games/minecraft.jpg",
+      "image": "assets/images/minecraft.jpg",
       "gallery": [
-        "assets/images/games/minecraft-1.jpg",
-        "assets/images/games/minecraft-2.jpg",
-        "assets/images/games/minecraft-3.jpg"
+        "assets/images/minecraft-1.jpg",
+        "assets/images/minecraft-2.jpg",
+        "assets/images/minecraft-3.jpg"
       ],
       "features": [
         "Block-based building",
@@ -499,18 +499,18 @@
       "description": "Swing through New York as both Peter Parker and Miles Morales in this epic superhero adventure.",
       "genre": "Action Adventure",
       "platforms": ["PC", "Xbox"],
-      "price": 59.99,
+      "price": 69.99,
       "originalPrice": 69.99,
-      "discount": 14,
+      "discount": 0,
       "rating": 4.7,
-      "releaseDate": "2024-03-07",
+      "releaseDate": "2024-01-19",
       "developer": "Insomniac Games",
       "publisher": "Sony Interactive Entertainment",
-      "image": "assets/images/games/spider-man-2.jpg",
+      "image": "assets/images/spider-man-2.jpg",
       "gallery": [
-        "assets/images/games/spider-man-2-1.jpg",
-        "assets/images/games/spider-man-2-2.jpg",
-        "assets/images/games/spider-man-2-3.jpg"
+        "assets/images/spider-man-2-1.jpg",
+        "assets/images/spider-man-2-2.jpg",
+        "assets/images/spider-man-2-3.jpg"
       ],
       "features": [
         "Dual protagonists",
@@ -544,21 +544,21 @@
       "id": "baldurs-gate-3",
       "title": "Baldur's Gate 3",
       "subtitle": "Digital Deluxe Edition",
-      "description": "Gather your party and return to the Forgotten Realms in a tale of fellowship and betrayal.",
+      "description": "An epic role-playing game set in the world of Dungeons & Dragons, featuring turn-based combat and deep storytelling.",
       "genre": "RPG",
       "platforms": ["PC", "Xbox"],
-      "price": 49.99,
+      "price": 59.99,
       "originalPrice": 59.99,
-      "discount": 17,
+      "discount": 0,
       "rating": 4.9,
       "releaseDate": "2023-08-03",
       "developer": "Larian Studios",
       "publisher": "Larian Studios",
-      "image": "assets/images/games/baldurs-gate-3.jpg",
+      "image": "assets/images/baldurs-gate-3.jpg",
       "gallery": [
-        "assets/images/games/baldurs-gate-3-1.jpg",
-        "assets/images/games/baldurs-gate-3-2.jpg",
-        "assets/images/games/baldurs-gate-3-3.jpg"
+        "assets/images/baldurs-gate-3-1.jpg",
+        "assets/images/baldurs-gate-3-2.jpg",
+        "assets/images/baldurs-gate-3-3.jpg"
       ],
       "features": [
         "Turn-based combat",
@@ -593,43 +593,43 @@
     {
       "id": "action",
       "name": "Action",
-      "description": "Fast-paced action games with exciting combat and thrilling sequences",
-      "image": "assets/images/categories/action.jpg",
+      "description": "Fast-paced games with exciting combat and thrilling adventures",
+      "image": "assets/images/action.jpg",
       "gameCount": 45
     },
     {
       "id": "rpg",
       "name": "RPG",
-      "description": "Role-playing games with deep character progression and immersive worlds",
-      "image": "assets/images/categories/rpg.jpg",
+      "description": "Role-playing games with deep stories and character development",
+      "image": "assets/images/rpg.jpg",
       "gameCount": 32
     },
     {
       "id": "adventure",
       "name": "Adventure",
-      "description": "Story-driven adventures with exploration and puzzle-solving",
-      "image": "assets/images/categories/adventure.jpg",
+      "description": "Explore vast worlds and solve challenging puzzles",
+      "image": "assets/images/adventure.jpg",
       "gameCount": 28
     },
     {
       "id": "strategy",
       "name": "Strategy",
-      "description": "Strategic thinking and tactical gameplay for masterminds",
-      "image": "assets/images/categories/strategy.jpg",
+      "description": "Test your tactical skills and strategic thinking",
+      "image": "assets/images/strategy.jpg",
       "gameCount": 19
     },
     {
       "id": "sports",
       "name": "Sports",
-      "description": "Realistic sports simulations and competitive gameplay",
-      "image": "assets/images/categories/sports.jpg",
+      "description": "Compete in realistic sports simulations and tournaments",
+      "image": "assets/images/sports.jpg",
       "gameCount": 15
     },
     {
       "id": "simulation",
       "name": "Simulation",
-      "description": "Realistic simulations of real-world activities and systems",
-      "image": "assets/images/categories/simulation.jpg",
+      "description": "Experience realistic simulations of various activities",
+      "image": "assets/images/simulation.jpg",
       "gameCount": 12
     }
   ]

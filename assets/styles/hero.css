@@ -24,9 +24,10 @@
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: 1fr;
   gap: 2px;
+  z-index: -1;
 }
 
 .hero-image {
@@ -45,61 +46,61 @@
 
 /* Individual image positioning and animations */
 .hero-image-1 {
-  grid-column: 1 / 3;
+  grid-column: 1 / 2;
   grid-row: 1 / 2;
   animation-delay: 0.1s;
 }
 
 .hero-image-2 {
-  grid-column: 3 / 4;
+  grid-column: 2 / 3;
   grid-row: 1 / 2;
   animation-delay: 0.2s;
 }
 
 .hero-image-3 {
-  grid-column: 4 / 6;
+  grid-column: 3 / 4;
   grid-row: 1 / 2;
   animation-delay: 0.3s;
 }
 
 .hero-image-4 {
-  grid-column: 1 / 2;
-  grid-row: 2 / 3;
+  grid-column: 4 / 5;
+  grid-row: 1 / 2;
   animation-delay: 0.4s;
 }
 
 .hero-image-5 {
-  grid-column: 2 / 4;
-  grid-row: 2 / 3;
+  grid-column: 5 / 6;
+  grid-row: 1 / 2;
   animation-delay: 0.5s;
 }
 
 .hero-image-6 {
-  grid-column: 4 / 5;
-  grid-row: 2 / 3;
+  grid-column: 6 / 7;
+  grid-row: 1 / 2;
   animation-delay: 0.6s;
 }
 
 .hero-image-7 {
-  grid-column: 5 / 6;
-  grid-row: 2 / 3;
+  grid-column: 7 / 8;
+  grid-row: 1 / 2;
   animation-delay: 0.7s;
 }
 
 .hero-image-8 {
-  grid-column: 1 / 2;
+  grid-column: 8 / 9;
   grid-row: 1 / 2;
   animation-delay: 0.8s;
 }
 
 .hero-image-9 {
-  grid-column: 3 / 4;
-  grid-row: 2 / 3;
+  grid-column: 9 / 10;
+  grid-row: 1 / 2;
   animation-delay: 0.9s;
 }
 
 .hero-image-10 {
-  grid-column: 5 / 6;
+  grid-column: 10 / 11;
   grid-row: 1 / 2;
   animation-delay: 1s;
 }
@@ -112,12 +113,13 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(
-    135deg,
-    rgba(26, 26, 26, 0.8) 0%,
-    rgba(44, 62, 80, 0.7) 50%,
-    rgba(255, 107, 53, 0.6) 100%
+    180deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.6) 30%,
+    rgba(0, 0, 0, 0.4) 60%,
+    rgba(0, 0, 0, 0.2) 100%
   );
-  z-index: -1;
+  z-index: 0;
 }
 
 /* Hero Content */
@@ -198,10 +200,10 @@
   background: linear-gradient(
     135deg,
     var(--primary-orange),
-    var(--accent-coral)
+    var(--secondary-orange)
   );
   color: var(--white);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-md);
 }
 
 .hero-btn-primary::before {
@@ -230,15 +232,15 @@
 }
 
 .hero-btn-secondary {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--white);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.5);
+  color: #000000;
+  border: 2px solid rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
 }
 
 .hero-btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.9);
   transform: translateY(-2px);
 }
 
@@ -302,64 +304,21 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+  .hero-collage {
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: 1fr;
+  }
+}
+
 @media (max-width: 768px) {
   .hero-section {
     min-height: 80vh;
   }
 
   .hero-collage {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-  }
-
-  .hero-image-1 {
-    grid-column: 1 / 3;
-    grid-row: 1 / 3;
-  }
-
-  .hero-image-2 {
-    grid-column: 3 / 4;
-    grid-row: 1 / 2;
-  }
-
-  .hero-image-3 {
-    grid-column: 3 / 4;
-    grid-row: 2 / 3;
-  }
-
-  .hero-image-4 {
-    grid-column: 1 / 2;
-    grid-row: 3 / 4;
-  }
-
-  .hero-image-5 {
-    grid-column: 2 / 4;
-    grid-row: 3 / 4;
-  }
-
-  .hero-image-6 {
-    grid-column: 1 / 2;
-    grid-row: 4 / 5;
-  }
-
-  .hero-image-7 {
-    grid-column: 2 / 3;
-    grid-row: 4 / 5;
-  }
-
-  .hero-image-8 {
-    grid-column: 3 / 4;
-    grid-row: 4 / 5;
-  }
-
-  .hero-image-9 {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-  }
-
-  .hero-image-10 {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: 1fr;
   }
 
   .hero-actions {
@@ -375,6 +334,11 @@
 }
 
 @media (max-width: 480px) {
+  .hero-collage {
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: 1fr;
+  }
+
   .hero-content {
     padding: 0 var(--spacing-sm);
   }

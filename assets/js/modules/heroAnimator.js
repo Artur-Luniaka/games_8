@@ -188,15 +188,16 @@ class HeroAnimator {
   }
 
   handleButtonHover(button) {
-    // Add hover effects
-    button.style.transform = "translateY(-2px)";
+    // Don't override CSS transform styles
+    // button.style.transform = "translateY(-2px)";
 
     // Create ripple effect
     this.createRippleEffect(button);
   }
 
   handleButtonLeave(button) {
-    button.style.transform = "";
+    // Don't reset transform to avoid overriding CSS styles
+    // button.style.transform = "";
   }
 
   createRippleEffect(button) {
