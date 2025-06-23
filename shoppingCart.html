@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart | PixelVault</title>
+    <meta
+      name="description"
+      content="Review your cart items, adjust quantities, and proceed to checkout."
+    />
+    <link rel="stylesheet" href="assets/styles/core.css" />
+    <link rel="stylesheet" href="assets/styles/header.css" />
+    <link rel="stylesheet" href="assets/styles/footer.css" />
+    <link rel="stylesheet" href="assets/styles/shoppingCart.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="header-container"></div>
+
+    <main class="cart-main">
+      <div class="cart-container">
+        <div class="cart-header">
+          <h1 class="cart-title">Shopping Cart</h1>
+          <p class="cart-subtitle">Review your items and proceed to checkout</p>
+        </div>
+
+        <div class="cart-content">
+          <div class="cart-items-section">
+            <div id="cart-items-container">
+              <!-- Cart items will be loaded here dynamically -->
+            </div>
+          </div>
+
+          <div class="cart-summary-section">
+            <div class="cart-summary">
+              <h2 class="summary-title">Order Summary</h2>
+
+              <div class="summary-items">
+                <div class="summary-item">
+                  <span>Subtotal</span>
+                  <span id="subtotal">$0.00</span>
+                </div>
+                <div class="summary-item">
+                  <span>Tax</span>
+                  <span id="tax">$0.00</span>
+                </div>
+                <div class="summary-item total">
+                  <span>Total</span>
+                  <span id="total">$0.00</span>
+                </div>
+              </div>
+
+              <div class="summary-actions">
+                <button id="checkout-btn" class="checkout-btn" disabled>
+                  Proceed to Checkout
+                </button>
+                <button
+                  id="continue-shopping-btn"
+                  class="continue-shopping-btn"
+                >
+                  Continue Shopping
+                </button>
+              </div>
+
+              <div class="cart-benefits">
+                <div class="benefit-item">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Secure Payment</span>
+                </div>
+                <div class="benefit-item">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Instant Download</span>
+                </div>
+                <div class="benefit-item">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>30-Day Refund</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script type="module" src="assets/js/modules/headerLoader.js"></script>
+    <script type="module" src="assets/js/modules/footerLoader.js"></script>
+    <script type="module" src="assets/js/modules/cartManager.js"></script>
+  </body>
+</html>

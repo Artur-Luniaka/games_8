@@ -1,0 +1,636 @@
+{
+  "games": [
+    {
+      "id": "cyberpunk-2077",
+      "title": "Cyberpunk 2077",
+      "subtitle": "Phantom Liberty",
+      "description": "An open-world action-adventure story set in Night City, a megalopolis obsessed with power, glamour and body modification.",
+      "genre": "RPG",
+      "platforms": ["PC", "Xbox"],
+      "price": 59.99,
+      "originalPrice": 79.99,
+      "discount": 25,
+      "rating": 4.2,
+      "releaseDate": "2023-09-26",
+      "developer": "CD Projekt Red",
+      "publisher": "CD Projekt",
+      "image": "assets/images/games/cyberpunk-2077.jpg",
+      "gallery": [
+        "assets/images/games/cyberpunk-2077-1.jpg",
+        "assets/images/games/cyberpunk-2077-2.jpg",
+        "assets/images/games/cyberpunk-2077-3.jpg"
+      ],
+      "features": [
+        "Open-world RPG",
+        "First-person perspective",
+        "Cyberpunk setting",
+        "Character customization",
+        "Multiple endings"
+      ],
+      "systemRequirements": {
+        "minimum": {
+          "os": "Windows 10",
+          "processor": "Intel Core i5-3570K",
+          "memory": "8 GB RAM",
+          "graphics": "NVIDIA GeForce GTX 970",
+          "storage": "70 GB"
+        },
+        "recommended": {
+          "os": "Windows 10",
+          "processor": "Intel Core i7-4790",
+          "memory": "12 GB RAM",
+          "graphics": "NVIDIA GeForce GTX 1060",
+          "storage": "70 GB"
+        }
+      },
+      "tags": ["cyberpunk", "rpg", "open-world", "action", "adventure"],
+      "isFeatured": true,
+      "isNew": false,
+      "isOnSale": true
+    },
+    {
+      "id": "elden-ring",
+      "title": "Elden Ring",
+      "subtitle": "Shadow of the Erdtree",
+      "description": "An action RPG set in a vast fantasy world created by Hidetaka Miyazaki and George R.R. Martin.",
+      "genre": "Action RPG",
+      "platforms": ["PC", "Xbox"],
+      "price": 49.99,
+      "originalPrice": 59.99,
+      "discount": 17,
+      "rating": 4.8,
+      "releaseDate": "2024-06-21",
+      "developer": "FromSoftware",
+      "publisher": "Bandai Namco",
+      "image": "assets/images/games/elden-ring.jpg",
+      "gallery": [
+        "assets/images/games/elden-ring-1.jpg",
+        "assets/images/games/elden-ring-2.jpg",
+        "assets/images/games/elden-ring-3.jpg"
+      ],
+      "features": [
+        "Open-world action RPG",
+        "Challenging combat",
+        "Vast fantasy world",
+        "Multiplayer features",
+        "Character building"
+      ],
+      "systemRequirements": {
+        "minimum": {
+          "os": "Windows 10",
+          "processor": "Intel Core i5-8400",
+          "memory": "12 GB RAM",
+          "graphics": "NVIDIA GeForce GTX 1060",
+          "storage": "60 GB"
+        },
+        "recommended": {
+          "os": "Windows 10",
+          "processor": "Intel Core i7-8700K",
+          "memory": "16 GB RAM",
+          "graphics": "NVIDIA GeForce GTX 1070",
+          "storage": "60 GB"
+        }
+      },
+      "tags": [
+        "fantasy",
+        "action-rpg",
+        "open-world",
+        "challenging",
+        "multiplayer"
+      ],
+      "isFeatured": true,
+      "isNew": true,
+      "isOnSale": true
+    },
+    {
+      "id": "god-of-war-ragnarok",
+      "title": "God of War Ragnarök",
+      "subtitle": "Valhalla",
+      "description": "Kratos and Atreus must journey to each of the Nine Realms in search of answers as Asgardian forces prepare for war.",
+      "genre": "Action Adventure",
+      "platforms": ["PC", "Xbox"],
+      "price": 69.99,
+      "originalPrice": 69.99,
+      "discount": 0,
+      "rating": 4.9,
+      "releaseDate": "2024-01-15",
+      "developer": "Santa Monica Studio",
+      "publisher": "Sony Interactive Entertainment",
+      "image": "assets/images/games/god-of-war-ragnarok.jpg",
+      "gallery": [
+        "assets/images/games/god-of-war-ragnarok-1.jpg",
+        "assets/images/games/god-of-war-ragnarok-2.jpg",
+        "assets/images/games/god-of-war-ragnarok-3.jpg"
+      ],
+      "features": [
+        "Epic action combat",
+        "Norse mythology",
+        "Father-son story",
+        "Stunning visuals",
+        "Emotional narrative"
+      ],
+      "systemRequirements": {
+        "minimum": {
+          "os": "Windows 10",
+          "processor": "Intel Core i5-6600K",
+          "memory": "8 GB RAM",
+          "graphics": "NVIDIA GeForce GTX 1060",
+          "storage": "120 GB"
+        },
+        "recommended": {
+          "os": "Windows 10",
+          "processor": "Intel Core i7-8700",
+          "memory": "16 GB RAM",
+          "graphics": "NVIDIA GeForce RTX 3070",
+          "storage": "120 GB"
+        }
+      },
+      "tags": ["action", "adventure", "norse", "mythology", "story-driven"],
+      "isFeatured": true,
+      "isNew": true,
+      "isOnSale": false
+    },
+    {
+      "id": "red-dead-redemption-2",
+      "title": "Red Dead Redemption 2",
+      "subtitle": "Ultimate Edition",
+      "description": "An epic tale of life in America's unforgiving heartland. The game's vast and atmospheric world will also provide the foundation for a brand new online multiplayer experience.",
+      "genre": "Action Adventure",
+      "platforms": ["PC", "Xbox"],
+      "price": 39.99,
+      "originalPrice": 59.99,
+      "discount": 33,
+      "rating": 4.7,
+      "releaseDate": "2019-12-05",
+      "developer": "Rockstar Games",
+      "publisher": "Rockstar Games",
+      "image": "assets/images/games/red-dead-redemption-2.jpg",
+      "gallery": [
+        "assets/images/games/red-dead-redemption-2-1.jpg",
+        "assets/images/games/red-dead-redemption-2-2.jpg",
+        "assets/images/games/red-dead-redemption-2-3.jpg"
+      ],
+      "features": [
+        "Open-world western",
+        "Epic story",
+        "Realistic graphics",
+        "Online multiplayer",
+        "Horse bonding"
+      ],
+      "systemRequirements": {
+        "minimum": {
+          "os": "Windows 10",
+          "processor": "Intel Core i5-2500K",
+          "memory": "8 GB RAM",
+          "graphics": "NVIDIA GeForce GTX 770",
+          "storage": "150 GB"
+        },
+        "recommended": {
+          "os": "Windows 10",
+          "processor": "Intel Core i7-4770K",
+          "memory": "12 GB RAM",
+          "graphics": "NVIDIA GeForce GTX 1060",
+          "storage": "150 GB"
+        }
+      },
+      "tags": ["western", "open-world", "action", "adventure", "multiplayer"],
+      "isFeatured": false,
+      "isNew": false,
+      "isOnSale": true
+    },
+    {
+      "id": "the-witcher-3",
+      "title": "The Witcher 3: Wild Hunt",
+      "subtitle": "Complete Edition",
+      "description": "Become a professional monster slayer and embark on an adventure of epic proportions!",
+      "genre": "RPG",
+      "platforms": ["PC", "Xbox"],
+      "price": 29.99,
+      "originalPrice": 49.99,
+      "discount": 40,
+      "rating": 4.6,
+      "releaseDate": "2015-05-19",
+      "developer": "CD Projekt Red",
+      "publisher": "CD Projekt",
+      "image": "assets/images/games/the-witcher-3.jpg",
+      "gallery": [
+        "assets/images/games/the-witcher-3-1.jpg",
+        "assets/images/games/the-witcher-3-2.jpg",
+        "assets/images/games/the-witcher-3-3.jpg"
+      ],
+      "features": [
+        "Open-world RPG",
+        "Monster hunting",
+        "Choice-driven story",
+        "Two expansions included",
+        "Next-gen graphics"
+      ],
+      "systemRequirements": {
+        "minimum": {
+          "os": "Windows 7",
+          "processor": "Intel Core i5-2500K",
+          "memory": "6 GB RAM",
+          "graphics": "NVIDIA GeForce GTX 660",
+          "storage": "50 GB"
+        },
+        "recommended": {
+          "os": "Windows 10",
+          "processor": "Intel Core i7-3770",
+          "memory": "8 GB RAM",
+          "graphics": "NVIDIA GeForce GTX 1060",
+          "storage": "50 GB"
+        }
+      },
+      "tags": [
+        "fantasy",
+        "rpg",
+        "open-world",
+        "monster-hunting",
+        "story-driven"
+      ],
+      "isFeatured": false,
+      "isNew": false,
+      "isOnSale": true
+    },
+    {
+      "id": "assassins-creed-mirage",
+      "title": "Assassin's Creed Mirage",
+      "subtitle": "Deluxe Edition",
+      "description": "Experience the story of Basim, a cunning street thief with nightmarish visions, seeking answers and justice.",
+      "genre": "Action Adventure",
+      "platforms": ["PC", "Xbox"],
+      "price": 44.99,
+      "originalPrice": 59.99,
+      "discount": 25,
+      "rating": 4.3,
+      "releaseDate": "2023-10-05",
+      "developer": "Ubisoft",
+      "publisher": "Ubisoft",
+      "image": "assets/images/games/assassins-creed-mirage.jpg",
+      "gallery": [
+        "assets/images/games/assassins-creed-mirage-1.jpg",
+        "assets/images/games/assassins-creed-mirage-2.jpg",
+        "assets/images/games/assassins-creed-mirage-3.jpg"
+      ],
+      "features": [
+        "Stealth gameplay",
+        "Historical setting",
+        "Parkour mechanics",
+        "Assassin abilities",
+        "Middle Eastern setting"
+      ],
+      "systemRequirements": {
+        "minimum": {
+          "os": "Windows 10",
+          "processor": "Intel Core i5-8400",
+          "memory": "8 GB RAM",
+          "graphics": "NVIDIA GeForce GTX 1060",
+          "storage": "40 GB"
+        },
+        "recommended": {
+          "os": "Windows 10",
+          "processor": "Intel Core i7-8700K",
+          "memory": "16 GB RAM",
+          "graphics": "NVIDIA GeForce RTX 2070",
+          "storage": "40 GB"
+        }
+      },
+      "tags": ["stealth", "action", "adventure", "historical", "assassin"],
+      "isFeatured": false,
+      "isNew": false,
+      "isOnSale": true
+    },
+    {
+      "id": "call-of-duty-modern-warfare-3",
+      "title": "Call of Duty: Modern Warfare III",
+      "subtitle": "Vault Edition",
+      "description": "The most advanced Call of Duty ever created. The game will feature the first-ever open world Zombies experience.",
+      "genre": "FPS",
+      "platforms": ["PC", "Xbox"],
+      "price": 54.99,
+      "originalPrice": 69.99,
+      "discount": 21,
+      "rating": 4.1,
+      "releaseDate": "2023-11-10",
+      "developer": "Sledgehammer Games",
+      "publisher": "Activision",
+      "image": "assets/images/games/call-of-duty-mw3.jpg",
+      "gallery": [
+        "assets/images/games/call-of-duty-mw3-1.jpg",
+        "assets/images/games/call-of-duty-mw3-2.jpg",
+        "assets/images/games/call-of-duty-mw3-3.jpg"
+      ],
+      "features": [
+        "Multiplayer FPS",
+        "Campaign mode",
+        "Zombies mode",
+        "Warzone integration",
+        "Modern weapons"
+      ],
+      "systemRequirements": {
+        "minimum": {
+          "os": "Windows 10",
+          "processor": "Intel Core i5-6600",
+          "memory": "8 GB RAM",
+          "graphics": "NVIDIA GeForce GTX 960",
+          "storage": "125 GB"
+        },
+        "recommended": {
+          "os": "Windows 10",
+          "processor": "Intel Core i7-8700K",
+          "memory": "16 GB RAM",
+          "graphics": "NVIDIA GeForce RTX 3060",
+          "storage": "125 GB"
+        }
+      },
+      "tags": ["fps", "multiplayer", "shooter", "modern", "warfare"],
+      "isFeatured": false,
+      "isNew": false,
+      "isOnSale": true
+    },
+    {
+      "id": "fifa-24",
+      "title": "EA FC 24",
+      "subtitle": "Ultimate Edition",
+      "description": "Experience the beautiful game with the most realistic football simulation ever created.",
+      "genre": "Sports",
+      "platforms": ["PC", "Xbox"],
+      "price": 49.99,
+      "originalPrice": 69.99,
+      "discount": 29,
+      "rating": 4.0,
+      "releaseDate": "2023-09-29",
+      "developer": "EA Sports",
+      "publisher": "Electronic Arts",
+      "image": "assets/images/games/fifa-24.jpg",
+      "gallery": [
+        "assets/images/games/fifa-24-1.jpg",
+        "assets/images/games/fifa-24-2.jpg",
+        "assets/images/games/fifa-24-3.jpg"
+      ],
+      "features": [
+        "Football simulation",
+        "Ultimate Team",
+        "Career mode",
+        "Pro Clubs",
+        "Real players and teams"
+      ],
+      "systemRequirements": {
+        "minimum": {
+          "os": "Windows 10",
+          "processor": "Intel Core i5-6600K",
+          "memory": "8 GB RAM",
+          "graphics": "NVIDIA GeForce GTX 1050",
+          "storage": "100 GB"
+        },
+        "recommended": {
+          "os": "Windows 10",
+          "processor": "Intel Core i7-8700",
+          "memory": "12 GB RAM",
+          "graphics": "NVIDIA GeForce GTX 1660",
+          "storage": "100 GB"
+        }
+      },
+      "tags": ["sports", "football", "multiplayer", "simulation", "career"],
+      "isFeatured": false,
+      "isNew": false,
+      "isOnSale": true
+    },
+    {
+      "id": "gta-v",
+      "title": "Grand Theft Auto V",
+      "subtitle": "Premium Edition",
+      "description": "Los Santos: a sprawling sun-soaked metropolis full of self-help gurus, starlets and fading celebrities.",
+      "genre": "Action Adventure",
+      "platforms": ["PC", "Xbox"],
+      "price": 19.99,
+      "originalPrice": 29.99,
+      "discount": 33,
+      "rating": 4.5,
+      "releaseDate": "2013-09-17",
+      "developer": "Rockstar North",
+      "publisher": "Rockstar Games",
+      "image": "assets/images/games/gta-v.jpg",
+      "gallery": [
+        "assets/images/games/gta-v-1.jpg",
+        "assets/images/games/gta-v-2.jpg",
+        "assets/images/games/gta-v-3.jpg"
+      ],
+      "features": [
+        "Open-world action",
+        "Three protagonists",
+        "Online multiplayer",
+        "Heist missions",
+        "Los Santos setting"
+      ],
+      "systemRequirements": {
+        "minimum": {
+          "os": "Windows 10",
+          "processor": "Intel Core 2 Quad CPU Q6600",
+          "memory": "4 GB RAM",
+          "graphics": "NVIDIA 9800 GT",
+          "storage": "72 GB"
+        },
+        "recommended": {
+          "os": "Windows 10",
+          "processor": "Intel Core i5 3470",
+          "memory": "8 GB RAM",
+          "graphics": "NVIDIA GTX 660",
+          "storage": "72 GB"
+        }
+      },
+      "tags": ["open-world", "action", "adventure", "crime", "multiplayer"],
+      "isFeatured": false,
+      "isNew": false,
+      "isOnSale": true
+    },
+    {
+      "id": "minecraft",
+      "title": "Minecraft",
+      "subtitle": "Java & Bedrock Edition",
+      "description": "Create, explore and survive! The world is your canvas and the ground beneath your feet is your paint.",
+      "genre": "Sandbox",
+      "platforms": ["PC", "Xbox"],
+      "price": 26.95,
+      "originalPrice": 26.95,
+      "discount": 0,
+      "rating": 4.8,
+      "releaseDate": "2011-11-18",
+      "developer": "Mojang Studios",
+      "publisher": "Microsoft",
+      "image": "assets/images/games/minecraft.jpg",
+      "gallery": [
+        "assets/images/games/minecraft-1.jpg",
+        "assets/images/games/minecraft-2.jpg",
+        "assets/images/games/minecraft-3.jpg"
+      ],
+      "features": [
+        "Block-based building",
+        "Survival mode",
+        "Creative mode",
+        "Multiplayer servers",
+        "Mod support"
+      ],
+      "systemRequirements": {
+        "minimum": {
+          "os": "Windows 10",
+          "processor": "Intel Core i3-3210",
+          "memory": "4 GB RAM",
+          "graphics": "Intel HD Graphics 4000",
+          "storage": "1 GB"
+        },
+        "recommended": {
+          "os": "Windows 10",
+          "processor": "Intel Core i5-4690",
+          "memory": "8 GB RAM",
+          "graphics": "NVIDIA GeForce 700 Series",
+          "storage": "4 GB"
+        }
+      },
+      "tags": ["sandbox", "building", "survival", "creative", "multiplayer"],
+      "isFeatured": false,
+      "isNew": false,
+      "isOnSale": false
+    },
+    {
+      "id": "spider-man-2",
+      "title": "Marvel's Spider-Man 2",
+      "subtitle": "Digital Deluxe",
+      "description": "Swing through New York as both Peter Parker and Miles Morales in this epic superhero adventure.",
+      "genre": "Action Adventure",
+      "platforms": ["PC", "Xbox"],
+      "price": 59.99,
+      "originalPrice": 69.99,
+      "discount": 14,
+      "rating": 4.7,
+      "releaseDate": "2024-03-07",
+      "developer": "Insomniac Games",
+      "publisher": "Sony Interactive Entertainment",
+      "image": "assets/images/games/spider-man-2.jpg",
+      "gallery": [
+        "assets/images/games/spider-man-2-1.jpg",
+        "assets/images/games/spider-man-2-2.jpg",
+        "assets/images/games/spider-man-2-3.jpg"
+      ],
+      "features": [
+        "Dual protagonists",
+        "Web-swinging mechanics",
+        "Open-world New York",
+        "Superhero combat",
+        "Story-driven narrative"
+      ],
+      "systemRequirements": {
+        "minimum": {
+          "os": "Windows 10",
+          "processor": "Intel Core i5-4670",
+          "memory": "16 GB RAM",
+          "graphics": "NVIDIA GeForce GTX 970",
+          "storage": "75 GB"
+        },
+        "recommended": {
+          "os": "Windows 10",
+          "processor": "Intel Core i7-8700K",
+          "memory": "32 GB RAM",
+          "graphics": "NVIDIA GeForce RTX 3080",
+          "storage": "75 GB"
+        }
+      },
+      "tags": ["superhero", "action", "adventure", "spider-man", "open-world"],
+      "isFeatured": true,
+      "isNew": true,
+      "isOnSale": true
+    },
+    {
+      "id": "baldurs-gate-3",
+      "title": "Baldur's Gate 3",
+      "subtitle": "Digital Deluxe Edition",
+      "description": "Gather your party and return to the Forgotten Realms in a tale of fellowship and betrayal.",
+      "genre": "RPG",
+      "platforms": ["PC", "Xbox"],
+      "price": 49.99,
+      "originalPrice": 59.99,
+      "discount": 17,
+      "rating": 4.9,
+      "releaseDate": "2023-08-03",
+      "developer": "Larian Studios",
+      "publisher": "Larian Studios",
+      "image": "assets/images/games/baldurs-gate-3.jpg",
+      "gallery": [
+        "assets/images/games/baldurs-gate-3-1.jpg",
+        "assets/images/games/baldurs-gate-3-2.jpg",
+        "assets/images/games/baldurs-gate-3-3.jpg"
+      ],
+      "features": [
+        "Turn-based combat",
+        "D&D 5e ruleset",
+        "Choice-driven story",
+        "Multiplayer co-op",
+        "Character creation"
+      ],
+      "systemRequirements": {
+        "minimum": {
+          "os": "Windows 10",
+          "processor": "Intel Core i5-4690",
+          "memory": "8 GB RAM",
+          "graphics": "NVIDIA GeForce GTX 970",
+          "storage": "150 GB"
+        },
+        "recommended": {
+          "os": "Windows 10",
+          "processor": "Intel Core i7-8700K",
+          "memory": "16 GB RAM",
+          "graphics": "NVIDIA GeForce RTX 2060",
+          "storage": "150 GB"
+        }
+      },
+      "tags": ["rpg", "turn-based", "dnd", "fantasy", "co-op"],
+      "isFeatured": true,
+      "isNew": false,
+      "isOnSale": true
+    }
+  ],
+  "categories": [
+    {
+      "id": "action",
+      "name": "Action",
+      "description": "Fast-paced action games with exciting combat and thrilling sequences",
+      "image": "assets/images/categories/action.jpg",
+      "gameCount": 45
+    },
+    {
+      "id": "rpg",
+      "name": "RPG",
+      "description": "Role-playing games with deep character progression and immersive worlds",
+      "image": "assets/images/categories/rpg.jpg",
+      "gameCount": 32
+    },
+    {
+      "id": "adventure",
+      "name": "Adventure",
+      "description": "Story-driven adventures with exploration and puzzle-solving",
+      "image": "assets/images/categories/adventure.jpg",
+      "gameCount": 28
+    },
+    {
+      "id": "strategy",
+      "name": "Strategy",
+      "description": "Strategic thinking and tactical gameplay for masterminds",
+      "image": "assets/images/categories/strategy.jpg",
+      "gameCount": 19
+    },
+    {
+      "id": "sports",
+      "name": "Sports",
+      "description": "Realistic sports simulations and competitive gameplay",
+      "image": "assets/images/categories/sports.jpg",
+      "gameCount": 15
+    },
+    {
+      "id": "simulation",
+      "name": "Simulation",
+      "description": "Realistic simulations of real-world activities and systems",
+      "image": "assets/images/categories/simulation.jpg",
+      "gameCount": 12
+    }
+  ]
+}

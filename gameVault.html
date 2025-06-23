@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Vault - Browse All Games | PixelVault</title>
+    <meta
+      name="description"
+      content="Explore our vast collection of PC and Xbox games. Find your next adventure with filters, search, and personalized recommendations."
+    />
+    <link rel="stylesheet" href="assets/styles/core.css" />
+    <link rel="stylesheet" href="assets/styles/header.css" />
+    <link rel="stylesheet" href="assets/styles/footer.css" />
+    <link rel="stylesheet" href="assets/styles/gameVault.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="header-container"></div>
+
+    <main class="game-vault-main">
+      <section class="vault-hero">
+        <div class="section-container">
+          <div class="vault-hero-content">
+            <h1 class="vault-title">Game Vault</h1>
+            <p class="vault-subtitle">Discover worlds beyond imagination</p>
+            <div class="vault-search">
+              <div class="search-container">
+                <input
+                  type="text"
+                  id="game-search"
+                  placeholder="Search games..."
+                  class="search-input"
+                />
+                <button class="search-btn" aria-label="Search">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="vault-filters">
+        <div class="section-container">
+          <div class="filters-wrapper">
+            <div class="filter-group">
+              <label for="genre-filter" class="filter-label">Genre</label>
+              <select id="genre-filter" class="filter-select">
+                <option value="">All Genres</option>
+                <option value="action">Action</option>
+                <option value="rpg">RPG</option>
+                <option value="adventure">Adventure</option>
+                <option value="strategy">Strategy</option>
+                <option value="sports">Sports</option>
+                <option value="simulation">Simulation</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label for="platform-filter" class="filter-label">Platform</label>
+              <select id="platform-filter" class="filter-select">
+                <option value="">All Platforms</option>
+                <option value="pc">PC</option>
+                <option value="xbox">Xbox</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label for="price-filter" class="filter-label">Price Range</label>
+              <select id="price-filter" class="filter-select">
+                <option value="">All Prices</option>
+                <option value="0-20">Under $20</option>
+                <option value="20-40">$20 - $40</option>
+                <option value="40-60">$40 - $60</option>
+                <option value="60+">Over $60</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label for="sort-filter" class="filter-label">Sort By</label>
+              <select id="sort-filter" class="filter-select">
+                <option value="featured">Featured</option>
+                <option value="newest">Newest</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Highest Rated</option>
+              </select>
+            </div>
+
+            <button id="clear-filters" class="clear-filters-btn">
+              Clear Filters
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="vault-results">
+        <div class="section-container">
+          <div class="results-header">
+            <div class="results-info">
+              <span id="results-count" class="results-count"
+                >12 games found</span
+              >
+              <div class="view-toggle">
+                <button
+                  class="view-btn active"
+                  data-view="grid"
+                  aria-label="Grid view"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                  </svg>
+                </button>
+                <button
+                  class="view-btn"
+                  data-view="list"
+                  aria-label="List view"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <line x1="8" y1="6" x2="21" y2="6"></line>
+                    <line x1="8" y1="12" x2="21" y2="12"></line>
+                    <line x1="8" y1="18" x2="21" y2="18"></line>
+                    <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                    <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                    <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div id="games-container" class="games-container grid-view">
+            <!-- Games will be loaded here dynamically -->
+          </div>
+
+          <div class="load-more-container">
+            <button id="load-more-btn" class="load-more-btn">
+              Load More Games
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script type="module" src="assets/js/modules/headerLoader.js"></script>
+    <script type="module" src="assets/js/modules/footerLoader.js"></script>
+    <script type="module" src="assets/js/modules/gameVaultManager.js"></script>
+  </body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PixelVault - Premium Gaming Store</title>
+    <meta
+      name="description"
+      content="Discover the latest PC and Xbox games at PixelVault. Premium gaming experience with exclusive titles and competitive prices."
+    />
+    <link rel="stylesheet" href="assets/styles/core.css" />
+    <link rel="stylesheet" href="assets/styles/hero.css" />
+    <link rel="stylesheet" href="assets/styles/sections.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="header-container"></div>
+
+    <main>
+      <section id="hero-section" class="hero-section">
+        <div class="hero-background">
+          <div class="hero-collage">
+            <img
+              src="assets/images/hero/game1.jpg"
+              alt="Cyberpunk 2077"
+              class="hero-image hero-image-1"
+            />
+            <img
+              src="assets/images/hero/game2.jpg"
+              alt="Elden Ring"
+              class="hero-image hero-image-2"
+            />
+            <img
+              src="assets/images/hero/game3.jpg"
+              alt="God of War"
+              class="hero-image hero-image-3"
+            />
+            <img
+              src="assets/images/hero/game4.jpg"
+              alt="Red Dead Redemption 2"
+              class="hero-image hero-image-4"
+            />
+            <img
+              src="assets/images/hero/game5.jpg"
+              alt="The Witcher 3"
+              class="hero-image hero-image-5"
+            />
+            <img
+              src="assets/images/hero/game6.jpg"
+              alt="Assassin's Creed"
+              class="hero-image hero-image-6"
+            />
+            <img
+              src="assets/images/hero/game7.jpg"
+              alt="Call of Duty"
+              class="hero-image hero-image-7"
+            />
+            <img
+              src="assets/images/hero/game8.jpg"
+              alt="FIFA 24"
+              class="hero-image hero-image-8"
+            />
+            <img
+              src="assets/images/hero/game9.jpg"
+              alt="GTA V"
+              class="hero-image hero-image-9"
+            />
+            <img
+              src="assets/images/hero/game10.jpg"
+              alt="Minecraft"
+              class="hero-image hero-image-10"
+            />
+          </div>
+          <div class="hero-overlay"></div>
+        </div>
+
+        <div class="hero-content">
+          <h1 class="hero-title">
+            <span class="hero-title-line">Unlock Your</span>
+            <span class="hero-title-line">Gaming Destiny</span>
+          </h1>
+          <p class="hero-description">
+            Dive into worlds where reality meets imagination. Discover premium
+            PC and Xbox games that redefine entertainment.
+          </p>
+          <div class="hero-actions">
+            <button class="hero-btn hero-btn-primary" data-action="explore">
+              <span class="btn-text">Explore Games</span>
+              <span class="btn-icon">→</span>
+            </button>
+            <button class="hero-btn hero-btn-secondary" data-action="deals">
+              <span class="btn-text">Special Deals</span>
+              <span class="btn-badge">New</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="featured-games" class="content-section">
+        <div class="section-container">
+          <div class="section-header">
+            <h2 class="section-title">Featured Titles</h2>
+            <p class="section-subtitle">
+              Handpicked games that define excellence
+            </p>
+          </div>
+          <div id="featured-games-grid" class="games-grid"></div>
+        </div>
+      </section>
+
+      <section id="categories-section" class="content-section">
+        <div class="section-container">
+          <div class="section-header">
+            <h2 class="section-title">Game Categories</h2>
+            <p class="section-subtitle">Find your perfect adventure</p>
+          </div>
+          <div id="categories-grid" class="categories-grid"></div>
+        </div>
+      </section>
+
+      <section id="trending-section" class="content-section">
+        <div class="section-container">
+          <div class="section-header">
+            <h2 class="section-title">Trending Now</h2>
+            <p class="section-subtitle">What gamers are playing</p>
+          </div>
+          <div id="trending-games" class="trending-carousel"></div>
+        </div>
+      </section>
+
+      <section id="newsletter-section" class="content-section">
+        <div class="section-container">
+          <div class="newsletter-content">
+            <h2 class="newsletter-title">Stay in the Loop</h2>
+            <p class="newsletter-description">
+              Get exclusive deals and gaming news delivered to your inbox
+            </p>
+            <form id="newsletter-form" class="newsletter-form">
+              <div class="form-group">
+                <input
+                  type="email"
+                  id="newsletter-email"
+                  placeholder="Enter your email"
+                  required
+                />
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials-section" class="content-section">
+        <div class="section-container">
+          <div class="section-header">
+            <h2 class="section-title">Gamer Reviews</h2>
+            <p class="section-subtitle">Real experiences from our community</p>
+          </div>
+          <div id="testimonials-grid" class="testimonials-grid"></div>
+        </div>
+      </section>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script type="module" src="assets/js/modules/headerLoader.js"></script>
+    <script type="module" src="assets/js/modules/footerLoader.js"></script>
+    <script type="module" src="assets/js/modules/heroAnimator.js"></script>
+    <script type="module" src="assets/js/modules/gamesLoader.js"></script>
+    <script
+      type="module"
+      src="assets/js/modules/categoriesRenderer.js"
+    ></script>
+    <script type="module" src="assets/js/modules/trendingCarousel.js"></script>
+    <script type="module" src="assets/js/modules/newsletterHandler.js"></script>
+    <script
+      type="module"
+      src="assets/js/modules/testimonialsLoader.js"
+    ></script>
+  </body>
+</html>
