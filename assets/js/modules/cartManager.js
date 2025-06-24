@@ -210,7 +210,11 @@ class CartManager {
     sessionStorage.setItem("checkoutCart", JSON.stringify(this.cart));
 
     // Navigate to checkout
-    window.location.href = "/orderCheckout.html";
+    const base = window.location.pathname.substring(
+      0,
+      window.location.pathname.lastIndexOf("/") + 1
+    );
+    window.location.href = base + "orderCheckout.html";
   }
 
   // Public method to add item to cart (used by other modules)
