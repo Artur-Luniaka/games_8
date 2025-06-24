@@ -1,6 +1,8 @@
 // Hero Animator Module - PixelVault
 // Handles all hero section animations and interactions
 
+import { goTo } from "./navigation.js";
+
 class HeroAnimator {
   constructor() {
     this.heroSection = document.getElementById("hero-section");
@@ -434,8 +436,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (exploreBtn) {
     exploreBtn.addEventListener("click", () => {
-      const base = window.location.pathname.replace(/\/+/g, "/");
-      window.location.href = base + "gameVault.html";
+      goTo("gameVault.html");
     });
   }
 

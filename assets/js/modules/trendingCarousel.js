@@ -1,6 +1,8 @@
 // Trending Carousel Module - GameVault
 // Displays trending games in a carousel on the homepage
 
+import { goTo } from "./navigation.js";
+
 class TrendingCarousel {
   constructor() {
     this.carouselContainer = document.getElementById("trending-games");
@@ -257,19 +259,11 @@ class TrendingCarousel {
   }
 
   handleQuickView(gameId) {
-    const base = window.location.pathname.substring(
-      0,
-      window.location.pathname.lastIndexOf("/") + 1
-    );
-    window.location.href = base + "gameDetails.html?id=" + gameId;
+    goTo("gameDetails.html?id=" + gameId);
   }
 
   handleGameClick(gameId) {
-    const base = window.location.pathname.substring(
-      0,
-      window.location.pathname.lastIndexOf("/") + 1
-    );
-    window.location.href = base + "gameDetails.html?id=" + gameId;
+    goTo("gameDetails.html?id=" + gameId);
   }
 
   showFallbackContent() {

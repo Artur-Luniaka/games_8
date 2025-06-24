@@ -1,6 +1,8 @@
 // Header Loader Module - GameVault
 // Dynamically loads and initializes the site header
 
+import { goTo } from "./navigation.js";
+
 class HeaderManager {
   constructor() {
     this.headerContainer = document.getElementById("header-container");
@@ -45,6 +47,7 @@ class HeaderManager {
     const mobileToggle = document.getElementById("mobile-menu-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
     const cartButton = document.getElementById("cart-button");
+    const exploreBtn = document.getElementById("explore-btn");
 
     if (mobileToggle && mobileMenu) {
       mobileToggle.addEventListener("click", () => {
@@ -72,6 +75,12 @@ class HeaderManager {
     if (cartButton) {
       cartButton.addEventListener("click", () => {
         this.handleCartClick();
+      });
+    }
+
+    if (exploreBtn) {
+      exploreBtn.addEventListener("click", () => {
+        goTo("gameVault.html");
       });
     }
 
@@ -202,9 +211,7 @@ class HeaderManager {
   }
 
   handleCartClick() {
-    // Navigate to cart page
-    const base = window.location.pathname.split("/").slice(0, -1).join("/");
-    window.location.href = base + "shoppingCart.html";
+    goTo("shoppingCart.html");
   }
 
   handleNavigationClick(event, link) {

@@ -1,6 +1,8 @@
 // Games Loader Module - GameVault
 // Loads and displays featured games and hot deals on the homepage
 
+import { goTo } from "./navigation.js";
+
 class GamesLoader {
   constructor() {
     this.gamesData = [];
@@ -199,11 +201,7 @@ class GamesLoader {
   }
 
   handleQuickView(gameId) {
-    const base = window.location.pathname.substring(
-      0,
-      window.location.pathname.lastIndexOf("/") + 1
-    );
-    window.location.href = base + "gameDetails.html?id=" + gameId;
+    goTo("gameDetails.html?id=" + gameId);
   }
 
   handleAddToCart(gameId) {
@@ -246,11 +244,7 @@ class GamesLoader {
   }
 
   handleGameClick(gameId) {
-    const base = window.location.pathname.substring(
-      0,
-      window.location.pathname.lastIndexOf("/") + 1
-    );
-    window.location.href = base + "gameDetails.html?id=" + gameId;
+    goTo("gameDetails.html?id=" + gameId);
   }
 
   showFallbackContent() {

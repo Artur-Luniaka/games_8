@@ -1,6 +1,8 @@
 // Categories Renderer Module - GameVault
 // Renders game categories on the homepage
 
+import { goTo } from "./navigation.js";
+
 class CategoriesRenderer {
   constructor() {
     this.categoriesContainer = document.getElementById("categories-grid");
@@ -114,11 +116,7 @@ class CategoriesRenderer {
   }
 
   handleCategoryClick(categoryId) {
-    const base = window.location.pathname.substring(
-      0,
-      window.location.pathname.lastIndexOf("/") + 1
-    );
-    window.location.href = base + "gameVault.html?category=" + categoryId;
+    goTo("gameVault.html?category=" + categoryId);
   }
 }
 
