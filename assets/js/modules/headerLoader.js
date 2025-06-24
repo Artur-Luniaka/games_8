@@ -24,7 +24,7 @@ class HeaderManager {
   }
 
   async loadHeaderContent() {
-    const response = await fetch("components/header.html");
+    const response = await fetch("./components/header.html");
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }

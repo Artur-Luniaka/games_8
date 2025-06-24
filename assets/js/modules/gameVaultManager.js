@@ -18,7 +18,7 @@ class GameVaultManager {
 
   async loadGames() {
     try {
-      const response = await fetch("/assets/data/games.json");
+      const response = await fetch("./assets/data/games.json");
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
