@@ -809,7 +809,7 @@
   .success-btn-main,
   .success-btn-secondary {
     width: 100%;
-    padding: 14px 0;
+    padding: 14px 15px;
     font-size: 1rem;
   }
 }
