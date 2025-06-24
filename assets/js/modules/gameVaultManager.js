@@ -133,7 +133,11 @@ class GameVaultManager {
         }
 
         const gameId = card.dataset.gameId;
-        window.location.href = `/gameDetails.html?id=${gameId}`;
+        const base = window.location.pathname.substring(
+          0,
+          window.location.pathname.lastIndexOf("/") + 1
+        );
+        window.location.href = base + "gameDetails.html?id=" + gameId;
       });
     });
 
