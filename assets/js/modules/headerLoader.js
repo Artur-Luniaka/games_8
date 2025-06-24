@@ -203,7 +203,8 @@ class HeaderManager {
 
   handleCartClick() {
     // Navigate to cart page
-    window.location.href = "shoppingCart.html";
+    const base = window.location.pathname.split("/").slice(0, -1).join("/");
+    window.location.href = base + "shoppingCart.html";
   }
 
   handleNavigationClick(event, link) {

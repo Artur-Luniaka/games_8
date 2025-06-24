@@ -38,7 +38,7 @@ class CartManager {
     );
     if (continueShoppingBtn) {
       continueShoppingBtn.addEventListener("click", () => {
-        window.location.href = "/gameVault.html";
+        this.proceedToGameVault();
       });
     }
 
@@ -215,6 +215,14 @@ class CartManager {
       window.location.pathname.lastIndexOf("/") + 1
     );
     window.location.href = base + "orderCheckout.html";
+  }
+
+  proceedToGameVault() {
+    const base = window.location.pathname.substring(
+      0,
+      window.location.pathname.lastIndexOf("/") + 1
+    );
+    window.location.href = base + "gameVault.html";
   }
 
   // Public method to add item to cart (used by other modules)

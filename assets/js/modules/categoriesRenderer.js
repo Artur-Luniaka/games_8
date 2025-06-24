@@ -114,8 +114,11 @@ class CategoriesRenderer {
   }
 
   handleCategoryClick(categoryId) {
-    // Navigate to game vault with category filter
-    window.location.href = `gameVault.html?category=${categoryId}`;
+    const base = window.location.pathname.substring(
+      0,
+      window.location.pathname.lastIndexOf("/") + 1
+    );
+    window.location.href = base + "gameVault.html?category=" + categoryId;
   }
 }
 

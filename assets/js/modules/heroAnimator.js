@@ -434,7 +434,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (exploreBtn) {
     exploreBtn.addEventListener("click", () => {
-      window.location.href = "gameVault.html";
+      const base = window.location.pathname.replace(/\/+/g, "/");
+      window.location.href = base + "gameVault.html";
     });
   }
 

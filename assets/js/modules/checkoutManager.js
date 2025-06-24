@@ -320,9 +320,7 @@ class CheckoutManager {
                 You will receive an email with your digital game keys and download instructions shortly.
             </p>
             <div class="success-actions">
-                <a href="/gameVault.html" class="download-btn success-btn-main">
-                    Go to Game Library
-                </a>
+                <a href="" class="download-btn success-btn-main" id="go-to-library-btn">Go to Game Library</a>
                 <a href="./" class="download-btn success-btn-secondary">
                     Back to Store
                 </a>
@@ -345,6 +343,17 @@ class CheckoutManager {
     ) {
       window.headerManager.refreshCartCount();
     }
+
+    const base = window.location.pathname.substring(
+      0,
+      window.location.pathname.lastIndexOf("/") + 1
+    );
+    setTimeout(() => {
+      const btn = document.getElementById("go-to-library-btn");
+      if (btn) {
+        btn.setAttribute("href", base + "gameVault.html");
+      }
+    }, 0);
   }
 
   showErrorState(message) {
