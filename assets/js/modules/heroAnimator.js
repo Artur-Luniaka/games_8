@@ -196,8 +196,8 @@ class HeroAnimator {
       window.scrollTo({ top: y, behavior: "smooth" });
       return;
     }
-    // Если не на главной — переход на index.html#hot-deals
-    window.location.href = "index.html#hot-deals";
+    // Если не на главной — переход на ./#hot-deals
+    window.location.href = "./#hot-deals";
   }
 
   handleButtonHover(button) {
@@ -443,7 +443,7 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       const path = window.location.pathname.replace(/\/+/g, "/");
       if (path !== "/" && !path.endsWith("/index.html")) {
-        window.location.href = "index.html#hot-deals";
+        window.location.href = "./#hot-deals";
         return;
       }
       // Если на главной — плавный скролл

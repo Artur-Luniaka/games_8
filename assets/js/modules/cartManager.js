@@ -194,7 +194,7 @@ class CartManager {
                 </p>
                 <div class="empty-cart-actions">
                     <a href="/gameVault.html" class="browse-games-btn">Browse Games</a>
-                    <a href="/index.html" class="browse-games-btn" style="background: var(--neutral-gray);">Back to Home</a>
+                    <a href="./" class="browse-games-btn" style="background: var(--neutral-gray);">Back to Home</a>
                 </div>
             </div>
         `;

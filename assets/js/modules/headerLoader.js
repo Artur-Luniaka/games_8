@@ -80,7 +80,7 @@ class HeaderManager {
     navLinks.forEach((link) => {
       link.addEventListener("click", (event) => {
         if (
-          link.getAttribute("href") === "index.html#hot-deals" ||
+          link.getAttribute("href") === "./#hot-deals" ||
           link.getAttribute("href") === "#hot-deals"
         ) {
           event.preventDefault();
@@ -113,7 +113,7 @@ class HeaderManager {
             }
           } else {
             // Не на главной — переходим на главную с якорем
-            window.location.href = "index.html#hot-deals";
+            window.location.href = "./#hot-deals";
           }
           return;
         }
@@ -247,13 +247,13 @@ class HeaderManager {
       <header class="site-header">
         <div class="header-container">
           <div class="header-left">
-            <a href="index.html" class="logo-link">
+            <a href="./" class="logo-link">
               <span class="logo-text">GameVault</span>
             </a>
           </div>
           <nav class="main-navigation">
             <ul class="nav-list">
-              <li><a href="index.html" class="nav-link">Home</a></li>
+              <li><a href="./" class="nav-link">Home</a></li>
               <li><a href="gameVault.html" class="nav-link">Games</a></li>
               <li><a href="contactUs.html" class="nav-link">Contact</a></li>
               <li><a href="shoppingCart.html" class="nav-link">Cart</a></li>

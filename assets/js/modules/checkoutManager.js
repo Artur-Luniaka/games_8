@@ -323,7 +323,7 @@ class CheckoutManager {
                 <a href="/gameVault.html" class="download-btn success-btn-main">
                     Go to Game Library
                 </a>
-                <a href="/index.html" class="download-btn success-btn-secondary">
+                <a href="./" class="download-btn success-btn-secondary">
                     Back to Store
                 </a>
             </div>

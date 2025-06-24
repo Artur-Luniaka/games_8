@@ -248,9 +248,9 @@ class ContactManager {
     const formData = this.getFormData();
 
     formContent.innerHTML = `
-      <div class="contact-success" style="max-width: 420px; margin: 60px auto 0 auto; background: rgba(30,32,50,0.96); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.18); padding: 2.5rem 2rem 2rem 2rem; text-align: center;">
-        <div class="success-icon" style="font-size: 2.5rem; margin-bottom: 1.2rem;">🎮</div>
-        <h2 class="success-title" style="font-size: 2rem; font-weight: 700; margin-bottom: 1.2rem; color: var(--white);">Message Sent Successfully!</h2>
+      <div class="contact-success" style="max-width: 420px; margin: 60px auto 0 auto; background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange)); border-radius: 20px; box-shadow: 0 8px 32px rgba(255,107,53,0.28); padding: 2.5rem 2rem 2rem 2rem; text-align: left;">
+        <div class="success-icon" style="font-size: 2.5rem; margin-bottom: 1.2rem; text-align: center;">🎮</div>
+        <h2 class="success-title" style="font-size: 2rem; font-weight: 700; margin-bottom: 1.2rem; color: var(--white); text-align: left;">Message Sent Successfully!</h2>
         <p class="success-text" style="color: var(--white); margin-bottom: 1.5rem;">
           Thank you for reaching out, <b>${
             formData.firstName
@@ -263,9 +263,11 @@ class ContactManager {
           <div style="margin-bottom: 0.5rem;"><b>Response Time:</b> 2-4 hours</div>
           <div><b>Reference ID:</b> ${this.generateReferenceId()}</div>
         </div>
-        <button class="btn btn-primary" style="margin-top: 1rem; width: auto; min-width: 180px; max-width: 320px; display: flex; justify-content: center; align-items: center; text-align: center; padding: 1rem 2.5rem; font-size: 1.1rem; font-weight: 600;" onclick="location.reload()">
-          Send Another Message
-        </button>
+        <div style="display: flex; justify-content: center;">
+          <button class="btn btn-primary" style="margin-top: 1rem; width: auto; min-width: 180px; max-width: 320px; display: flex; justify-content: center; align-items: center; text-align: center; padding: 1rem 2.5rem; font-size: 1.1rem; font-weight: 600;" onclick="location.reload()">
+            Send Another Message
+          </button>
+        </div>
       </div>
     `;
     // Плавная прокрутка к верху уведомления
