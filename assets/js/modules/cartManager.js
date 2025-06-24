@@ -155,8 +155,8 @@ class CartManager {
     this.renderCart();
     this.updateSummary();
 
-    // Show notification
-    this.showNotification("Item removed from cart", "info");
+    // Show modal notification
+    this.showCartModal("Item removed from cart", "info");
   }
 
   updateSummary() {
@@ -202,7 +202,7 @@ class CartManager {
 
   proceedToCheckout() {
     if (this.cart.items.length === 0) {
-      this.showNotification("Your cart is empty", "error");
+      this.showCartModal("Your cart is empty", "error");
       return;
     }
 
@@ -211,65 +211,6 @@ class CartManager {
 
     // Navigate to checkout
     window.location.href = "/orderCheckout.html";
-  }
-
-  showNotification(message, type = "info") {
-    const notification = document.createElement("div");
-    notification.className = `notification notification-${type}`;
-    notification.innerHTML = `
-            <span>${message}</span>
-            <button class="notification-close">&times;</button>
-        `;
-
-    // Add styles
-    notification.style.cssText = `
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            background: ${
-              type === "success"
-                ? "var(--soft-green)"
-                : type === "error"
-                ? "var(--accent-coral)"
-                : "var(--primary-orange)"
-            };
-            color: white;
-            padding: 12px 16px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 10000;
-            animation: slideInRight 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        `;
-
-    // Add animation styles
-    const style = document.createElement("style");
-    style.textContent = `
-            @keyframes slideInRight {
-                from { transform: translateX(100%); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-        `;
-    document.head.appendChild(style);
-
-    document.body.appendChild(notification);
-
-    // Auto remove after 3 seconds
-    setTimeout(() => {
-      if (notification.parentNode) {
-        notification.remove();
-      }
-    }, 3000);
-
-    // Close button functionality
-    const closeBtn = notification.querySelector(".notification-close");
-    if (closeBtn) {
-      closeBtn.addEventListener("click", () => {
-        notification.remove();
-      });
-    }
   }
 
   // Public method to add item to cart (used by other modules)
@@ -293,6 +234,7 @@ class CartManager {
     this.saveCart();
     this.renderCart();
     this.updateSummary();
+    this.showCartModal("Added to cart", "success");
   }
 
   // Public method to get cart count (used by header)
@@ -321,6 +263,65 @@ class CartManager {
     this.renderCart();
     this.updateSummary();
   }
+
+  // Модальное уведомление для корзины
+  showCartModal(message, type = "info") {
+    // Удалить предыдущую модалку, если есть
+    const existingModal = document.querySelector(".cart-modal-notification");
+    if (existingModal) existingModal.remove();
+    const existingOverlay = document.querySelector(".cart-modal-overlay");
+    if (existingOverlay) existingOverlay.remove();
+
+    // Затемнение фона
+    const overlay = document.createElement("div");
+    overlay.className = "cart-modal-overlay";
+    overlay.style.cssText = `
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(20, 22, 40, 0.55);
+      z-index: 9998;
+      animation: fadeInOverlay 0.3s;
+    `;
+    document.body.appendChild(overlay);
+
+    // Модалка
+    const modal = document.createElement("div");
+    modal.className = "cart-modal-notification";
+    modal.innerHTML = `
+      <div class="cart-modal-icon" style="font-size:2.2rem; margin-bottom: 0.5rem;">
+        ${type === "success" ? "🛒" : type === "error" ? "⚠️" : "ℹ️"}
+      </div>
+      <div class="cart-modal-message" style="font-size:1.2rem; font-weight:600;">${message}</div>
+    `;
+    modal.style.cssText = `
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      background: linear-gradient(135deg, #23243a 70%, #181a2b 100%);
+      color: #fff;
+      border-radius: 20px;
+      box-shadow: 0 0 40px #00fff7cc, 0 0 0 3px #00fff7;
+      border: 2.5px solid #00fff7;
+      padding: 2.2rem 2.5rem 1.5rem 2.5rem;
+      z-index: 9999;
+      text-align: center;
+      min-width: 220px;
+      max-width: 90vw;
+      animation: cartModalAppear 0.25s cubic-bezier(.4,2,.6,1) both;
+    `;
+    document.body.appendChild(modal);
+
+    // Анимация исчезновения
+    setTimeout(() => {
+      modal.style.animation = "cartModalDisappear 0.3s forwards";
+      overlay.style.animation = "fadeOutOverlay 0.3s forwards";
+      setTimeout(() => {
+        modal.remove();
+        overlay.remove();
+      }, 320);
+    }, 1700);
+  }
 }
 
 // Initialize cart manager when DOM is loaded
@@ -333,3 +334,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Export for module usage
 export default CartManager;
+
+// Анимации для модалки
+const style = document.createElement("style");
+style.textContent = `
+@keyframes cartModalAppear {
+  from { opacity: 0; transform: translate(-50%, -60%) scale(0.95); }
+  to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+@keyframes cartModalDisappear {
+  to { opacity: 0; transform: translate(-50%, -40%) scale(0.95); }
+}
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes fadeOutOverlay {
+  to { opacity: 0; }
+}`;
+document.head.appendChild(style);

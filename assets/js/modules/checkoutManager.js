@@ -329,6 +329,13 @@ class CheckoutManager {
             </div>
         </div>
       `;
+      // Плавная прокрутка к верху уведомления
+      setTimeout(() => {
+        const successBlock = document.querySelector(".checkout-success");
+        if (successBlock) {
+          successBlock.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
     }
     // Очищаем корзину в localStorage и обновляем счетчик
     localStorage.removeItem("pixelVaultCart");

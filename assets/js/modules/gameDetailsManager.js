@@ -527,8 +527,13 @@ class GameDetailsManager {
       window.headerManager.refreshCartCount();
     }
 
-    // Show success notification
-    this.showNotification(`${this.game.title} added to cart!`, "success");
+    // Show success modal notification
+    if (window.cartManager) {
+      window.cartManager.showCartModal(
+        `${this.game.title} added to cart!`,
+        "success"
+      );
+    }
   }
 
   generateStars(rating) {
@@ -576,61 +581,6 @@ class GameDetailsManager {
                     </div>
                 </div>
             `;
-    }
-  }
-
-  showNotification(message, type = "info") {
-    const notification = document.createElement("div");
-    notification.className = `notification notification-${type}`;
-    notification.innerHTML = `
-            <span>${message}</span>
-            <button class="notification-close">&times;</button>
-        `;
-
-    // Add styles
-    notification.style.cssText = `
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            background: ${
-              type === "success" ? "var(--soft-green)" : "var(--primary-orange)"
-            };
-            color: white;
-            padding: 12px 16px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 10000;
-            animation: slideInRight 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        `;
-
-    // Add animation styles
-    const style = document.createElement("style");
-    style.textContent = `
-            @keyframes slideInRight {
-                from { transform: translateX(100%); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-        `;
-    document.head.appendChild(style);
-
-    document.body.appendChild(notification);
-
-    // Auto remove after 3 seconds
-    setTimeout(() => {
-      if (notification.parentNode) {
-        notification.remove();
-      }
-    }, 3000);
-
-    // Close button functionality
-    const closeBtn = notification.querySelector(".notification-close");
-    if (closeBtn) {
-      closeBtn.addEventListener("click", () => {
-        notification.remove();
-      });
     }
   }
 }

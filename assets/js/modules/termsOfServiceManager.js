@@ -12,38 +12,107 @@ class TermsOfServiceManager {
   }
 
   init() {
-    this.setupEventListeners();
-    this.initializeAnimations();
-    this.setupScrollEffects();
+    this.setupSmoothScrolling();
+    this.setupScrollSpy();
+    this.setupAnimations();
+    this.setupResponsiveBehavior();
     this.createTableOfContents();
-    this.setupPrintFunctionality();
   }
 
-  setupEventListeners() {
+  setupSmoothScrolling() {
     // Smooth scrolling for anchor links
-    document.addEventListener("click", (e) => {
-      if (e.target.matches('a[href^="#"]')) {
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
         e.preventDefault();
-        const targetId = e.target.getAttribute("href").substring(1);
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-          this.smoothScrollTo(targetElement);
-        }
-      }
-    });
-
-    // Contact info interactions
-    const contactLinks = document.querySelectorAll(".contact-info a");
-    contactLinks.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        if (link.href.startsWith("mailto:") || link.href.startsWith("tel:")) {
-          this.handleContactClick(e, link);
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
         }
       });
     });
+  }
 
-    // Copy contact info functionality
-    this.setupCopyFunctionality();
+  setupScrollSpy() {
+    // Get all sections
+    this.sections = Array.from(document.querySelectorAll(".policy-section"));
+
+    // Create intersection observer for scroll spy
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            this.currentSection = entry.target;
+            this.updateActiveSection();
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+        rootMargin: "-20% 0px -20% 0px",
+      }
+    );
+
+    // Observe all sections
+    this.sections.forEach((section) => {
+      observer.observe(section);
+    });
+  }
+
+  updateActiveSection() {
+    // Remove active class from all sections
+    this.sections.forEach((section) => {
+      section.classList.remove("active");
+    });
+
+    // Add active class to current section
+    if (this.currentSection) {
+      this.currentSection.classList.add("active");
+    }
+  }
+
+  setupAnimations() {
+    // Add entrance animations to sections
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    // Observe all sections for animations
+    this.sections.forEach((section) => {
+      section.style.opacity = "0";
+      section.style.transform = "translateY(20px)";
+      section.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+      observer.observe(section);
+    });
+  }
+
+  setupResponsiveBehavior() {
+    // Handle responsive behavior
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        document.body.classList.add("mobile");
+      } else {
+        document.body.classList.remove("mobile");
+      }
+    };
+
+    // Initial check
+    handleResize();
+
+    // Listen for resize events
+    window.addEventListener("resize", handleResize);
   }
 
   createTableOfContents() {
@@ -85,87 +154,6 @@ class TermsOfServiceManager {
     this.toc = toc;
   }
 
-  initializeAnimations() {
-    // Stagger section animations
-    const sections = document.querySelectorAll(".terms-section");
-    sections.forEach((section, index) => {
-      section.style.animationDelay = `${index * 0.1}s`;
-    });
-
-    // Animate contact info on scroll
-    const contactInfo = document.querySelector(".contact-info");
-    if (contactInfo) {
-      this.observeElement(contactInfo, () => {
-        contactInfo.style.animation = "slideInRight 0.6s ease-out";
-      });
-    }
-
-    // Animate TOC
-    if (this.toc) {
-      this.observeElement(this.toc, () => {
-        this.toc.style.animation = "fadeInUp 0.6s ease-out";
-      });
-    }
-  }
-
-  setupScrollEffects() {
-    // Highlight current section in view
-    const sections = document.querySelectorAll(".terms-section");
-    sections.forEach((section) => {
-      this.observeElement(
-        section,
-        () => {
-          this.highlightSection(section);
-          this.updateTocHighlight(section.id);
-        },
-        () => {
-          this.unhighlightSection(section);
-        }
-      );
-    });
-
-    // Parallax effect for header
-    window.addEventListener("scroll", () => {
-      this.handleParallax();
-    });
-  }
-
-  setupPrintFunctionality() {
-    // Add print button functionality
-    const printButton = document.createElement("button");
-    printButton.className = "print-button";
-    printButton.innerHTML = `
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6,9 6,2 18,2 18,9"></polyline>
-                <path d="M6,18H4a2,2 0 0,1 -2,-2V11a2,2 0 0,1 2,-2H20a2,2 0 0,1 2,2v5a2,2 0 0,1 -2,2H18"></path>
-                <polyline points="6,14 6,22 18,22 18,14"></polyline>
-            </svg>
-            Print Terms
-        `;
-
-    printButton.addEventListener("click", () => {
-      window.print();
-    });
-
-    const termsHeader = document.querySelector(".terms-header");
-    if (termsHeader) {
-      termsHeader.appendChild(printButton);
-    }
-  }
-
-  setupCopyFunctionality() {
-    const contactInfo = document.querySelector(".contact-info");
-    if (contactInfo) {
-      const copyButton = document.createElement("button");
-      copyButton.className = "copy-contact-btn";
-      copyButton.textContent = "Copy Contact Info";
-      copyButton.addEventListener("click", () => {
-        this.copyContactInfo();
-      });
-      contactInfo.appendChild(copyButton);
-    }
-  }
-
   smoothScrollTo(element) {
     const headerHeight = document.querySelector("header")?.offsetHeight || 0;
     const targetPosition = element.offsetTop - headerHeight - 20;
@@ -180,36 +168,6 @@ class TermsOfServiceManager {
     setTimeout(() => {
       element.style.animation = "";
     }, 600);
-  }
-
-  handleContactClick(e, link) {
-    // Add click feedback
-    link.style.transform = "scale(0.95)";
-    setTimeout(() => {
-      link.style.transform = "";
-    }, 150);
-
-    // Track contact clicks
-    this.trackContactClick(link.href);
-  }
-
-  copyContactInfo() {
-    const contactInfo = document.querySelector(".contact-info");
-    const textToCopy = contactInfo.textContent
-      .replace("Copy Contact Info", "")
-      .trim();
-
-    navigator.clipboard
-      .writeText(textToCopy)
-      .then(() => {
-        this.showNotification(
-          "Contact information copied to clipboard!",
-          "success"
-        );
-      })
-      .catch(() => {
-        this.showNotification("Failed to copy contact information", "error");
-      });
   }
 
   highlightSection(section) {
@@ -269,11 +227,6 @@ class TermsOfServiceManager {
     );
 
     observer.observe(element);
-  }
-
-  trackContactClick(contactType) {
-    // Analytics tracking (placeholder)
-    console.log("Contact clicked:", contactType);
   }
 
   showNotification(message, type = "info") {
@@ -345,57 +298,66 @@ style.textContent = `
         }
     }
 
-    .print-button {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: rgba(255, 255, 255, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.9rem;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(10px);
-    }
-
-    .print-button:hover {
-        background: rgba(255, 255, 255, 0.3);
-        transform: translateY(-2px);
-    }
-
-    .copy-contact-btn {
-        background: var(--accent-color);
+    .print-btn {
+        background: linear-gradient(135deg, #00fff7, #ff007b);
         color: white;
         border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 6px;
-        cursor: pointer;
+        padding: 0.75rem 1.5rem;
+        border-radius: 25px;
         font-size: 0.9rem;
-        margin-top: 1rem;
-        transition: all 0.3s ease;
-    }
-
-    .copy-contact-btn:hover {
-        background: var(--accent-hover);
-        transform: translateY(-1px);
-    }
-
-    .toc-list a.active {
-        color: var(--accent-color) !important;
-        background: rgba(99, 102, 241, 0.1) !important;
-        border-left-color: var(--accent-color) !important;
         font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 1rem;
+        display: inline-block;
+    }
+
+    .print-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 255, 247, 0.3);
+    }
+
+    .policy-section.active {
+        border-left: 3px solid #00fff7;
+        padding-left: 1rem;
+    }
+
+    .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(0, 255, 247, 0.9);
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        z-index: 1000;
+        animation: slideIn 0.3s ease;
+    }
+
+    .notification-error {
+        background: rgba(255, 0, 123, 0.9);
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .print-btn {
+            width: 100%;
+            margin-top: 1rem;
+        }
     }
 
     @media print {
-        .print-button,
-        .copy-contact-btn,
-        .terms-toc {
+        .print-btn {
             display: none;
         }
     }

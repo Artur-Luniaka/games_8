@@ -9,6 +9,7 @@ class ContactManager {
   init() {
     this.setupEventListeners();
     this.setupFormValidation();
+    this.initializeAnimations();
   }
 
   setupEventListeners() {
@@ -21,20 +22,45 @@ class ContactManager {
       });
     }
 
-    // Map button
-    const mapBtn = document.querySelector(".map-btn");
-    if (mapBtn) {
-      mapBtn.addEventListener("click", () => {
-        this.openMap();
+    // Directions button
+    const directionsBtn = document.querySelector(".directions-btn");
+    if (directionsBtn) {
+      directionsBtn.addEventListener("click", (event) => {
+        // Let the link work naturally - it opens in new tab
+        this.showNotification("Opening directions in Google Maps...", "info");
       });
     }
 
-    // Social media links
-    const socialIcons = document.querySelectorAll(".social-icon");
-    socialIcons.forEach((icon) => {
-      icon.addEventListener("click", (event) => {
-        event.preventDefault();
-        this.handleSocialClick(icon.getAttribute("aria-label"));
+    // Method cards hover effects
+    const methodCards = document.querySelectorAll(".method-card");
+    methodCards.forEach((card) => {
+      card.addEventListener("mouseenter", () => {
+        this.animateCardHover(card, true);
+      });
+      card.addEventListener("mouseleave", () => {
+        this.animateCardHover(card, false);
+      });
+    });
+
+    // Category cards hover effects
+    const categoryCards = document.querySelectorAll(".category-card");
+    categoryCards.forEach((card) => {
+      card.addEventListener("mouseenter", () => {
+        this.animateCardHover(card, true);
+      });
+      card.addEventListener("mouseleave", () => {
+        this.animateCardHover(card, false);
+      });
+    });
+
+    // FAQ items hover effects
+    const faqItems = document.querySelectorAll(".faq-item");
+    faqItems.forEach((item) => {
+      item.addEventListener("mouseenter", () => {
+        this.animateCardHover(item, true);
+      });
+      item.addEventListener("mouseleave", () => {
+        this.animateCardHover(item, false);
       });
     });
   }
@@ -134,6 +160,7 @@ class ContactManager {
     const errorElement = document.getElementById(`${field.name}-error`);
     if (errorElement) {
       errorElement.textContent = message;
+      errorElement.style.color = "#ff5252";
     }
   }
 
@@ -170,9 +197,13 @@ class ContactManager {
     }
 
     const submitBtn = document.querySelector(".submit-btn");
+    const btnText = submitBtn?.querySelector(".btn-text");
+    const btnIcon = submitBtn?.querySelector(".btn-icon");
+
     if (submitBtn) {
       submitBtn.disabled = true;
-      submitBtn.textContent = "Sending...";
+      if (btnText) btnText.textContent = "Sending...";
+      if (btnIcon) btnIcon.textContent = "⏳";
     }
 
     try {
@@ -190,7 +221,8 @@ class ContactManager {
 
       if (submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.textContent = "Send Message";
+        if (btnText) btnText.textContent = "Send Message";
+        if (btnIcon) btnIcon.textContent = "→";
       }
     }
   }
@@ -199,122 +231,173 @@ class ContactManager {
     return new Promise((resolve, reject) => {
       // Simulate network delay
       setTimeout(() => {
-        // Simulate 90% success rate
-        if (Math.random() > 0.1) {
+        // Simulate 95% success rate
+        if (Math.random() > 0.05) {
           resolve();
         } else {
           reject(new Error("Network error"));
         }
-      }, 1500);
+      }, 2000);
     });
   }
 
   showSuccessState() {
-    const contactContent = document.querySelector(".contact-content");
-    if (!contactContent) return;
+    const formContent = document.querySelector(".form-content");
+    if (!formContent) return;
 
-    contactContent.innerHTML = `
-            <div class="contact-success">
-                <div class="success-icon">✅</div>
-                <h2 class="success-title">Message Sent Successfully!</h2>
-                <p class="success-text">
-                    Thank you for contacting us! We've received your message and will get back to you within 24 hours.
-                </p>
-                <div class="success-actions">
-                    <a href="/index.html" class="submit-btn" style="text-decoration: none; display: inline-block;">
-                        Back to Home
-                    </a>
-                </div>
-            </div>
-        `;
+    const formData = this.getFormData();
+
+    formContent.innerHTML = `
+      <div class="contact-success" style="max-width: 420px; margin: 60px auto 0 auto; background: rgba(30,32,50,0.96); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.18); padding: 2.5rem 2rem 2rem 2rem; text-align: center;">
+        <div class="success-icon" style="font-size: 2.5rem; margin-bottom: 1.2rem;">🎮</div>
+        <h2 class="success-title" style="font-size: 2rem; font-weight: 700; margin-bottom: 1.2rem; color: var(--white);">Message Sent Successfully!</h2>
+        <p class="success-text" style="color: var(--white); margin-bottom: 1.5rem;">
+          Thank you for reaching out, <b>${
+            formData.firstName
+          }</b>!<br>We've received your message and our gaming experts will get back to you within <b>2-4 hours</b>.
+        </p>
+        <div class="success-details" style="text-align: left; margin: 0 auto 1.5rem auto; max-width: 320px; color: var(--white);">
+          <div style="margin-bottom: 0.5rem;"><b>Subject:</b> ${
+            formData.subject
+          }</div>
+          <div style="margin-bottom: 0.5rem;"><b>Response Time:</b> 2-4 hours</div>
+          <div><b>Reference ID:</b> ${this.generateReferenceId()}</div>
+        </div>
+        <button class="btn btn-primary" style="margin-top: 1rem; width: auto; min-width: 180px; max-width: 320px; display: flex; justify-content: center; align-items: center; text-align: center; padding: 1rem 2.5rem; font-size: 1.1rem; font-weight: 600;" onclick="location.reload()">
+          Send Another Message
+        </button>
+      </div>
+    `;
+    // Плавная прокрутка к верху уведомления
+    setTimeout(() => {
+      const successBlock = document.querySelector(".contact-success");
+      if (successBlock) {
+        successBlock.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 100);
   }
 
-  openMap() {
-    const address = "123 Gaming Street, Digital City, DC 12345";
-    const encodedAddress = encodeURIComponent(address);
-    const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
-    window.open(mapUrl, "_blank");
+  generateReferenceId() {
+    return "PV-" + Math.random().toString(36).substr(2, 9).toUpperCase();
   }
 
-  handleSocialClick(platform) {
-    const socialUrls = {
-      Facebook: "https://facebook.com/pixelvault",
-      Twitter: "https://twitter.com/pixelvault",
-      Instagram: "https://instagram.com/pixelvault",
-      Discord: "https://discord.gg/pixelvault",
+  initializeAnimations() {
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px",
     };
 
-    const url = socialUrls[platform];
-    if (url) {
-      window.open(url, "_blank");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = "1";
+          entry.target.style.transform = "translateY(0)";
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements for animation
+    const animatedElements = document.querySelectorAll(
+      ".method-card, .category-card, .faq-item"
+    );
+    animatedElements.forEach((el) => {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(30px)";
+      el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+      observer.observe(el);
+    });
+  }
+
+  animateCardHover(card, isHovering) {
+    if (!card) return;
+
+    if (isHovering) {
+      card.style.transform = "translateY(-8px) scale(1.02)";
+      card.style.boxShadow = "0 20px 40px rgba(255, 107, 53, 0.3)";
     } else {
-      this.showNotification(`${platform} link not available`, "info");
+      card.style.transform = "translateY(0) scale(1)";
+      card.style.boxShadow = "0 4px 16px rgba(0, 0, 0, 0.1)";
     }
   }
 
   showNotification(message, type = "info") {
+    // Remove existing notifications
+    const existingNotifications = document.querySelectorAll(".notification");
+    existingNotifications.forEach((notification) => notification.remove());
+
+    // Create notification element
     const notification = document.createElement("div");
     notification.className = `notification notification-${type}`;
     notification.innerHTML = `
-            <span>${message}</span>
-            <button class="notification-close">&times;</button>
-        `;
+      <div class="notification-content">
+        <span class="notification-icon">${this.getNotificationIcon(type)}</span>
+        <span class="notification-message">${message}</span>
+        <button class="notification-close" onclick="this.parentElement.parentElement.remove()">×</button>
+      </div>
+    `;
 
     // Add styles
     notification.style.cssText = `
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            background: ${
-              type === "success"
-                ? "var(--soft-green)"
-                : type === "error"
-                ? "var(--accent-coral)"
-                : "var(--primary-orange)"
-            };
-            color: white;
-            padding: 12px 16px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 10000;
-            animation: slideInRight 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        `;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: ${this.getNotificationColor(type)};
+      color: white;
+      padding: 16px 20px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      transform: translateX(400px);
+      transition: transform 0.3s ease;
+      max-width: 400px;
+      backdrop-filter: blur(10px);
+    `;
 
-    // Add animation styles
-    const style = document.createElement("style");
-    style.textContent = `
-            @keyframes slideInRight {
-                from { transform: translateX(100%); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-        `;
-    document.head.appendChild(style);
-
+    // Add to page
     document.body.appendChild(notification);
+
+    // Animate in
+    setTimeout(() => {
+      notification.style.transform = "translateX(0)";
+    }, 100);
 
     // Auto remove after 5 seconds
     setTimeout(() => {
-      if (notification.parentNode) {
-        notification.remove();
+      if (notification.parentElement) {
+        notification.style.transform = "translateX(400px)";
+        setTimeout(() => {
+          if (notification.parentElement) {
+            notification.remove();
+          }
+        }, 300);
       }
     }, 5000);
-
-    // Close button functionality
-    const closeBtn = notification.querySelector(".notification-close");
-    if (closeBtn) {
-      closeBtn.addEventListener("click", () => {
-        notification.remove();
-      });
-    }
   }
 
-  // Public method to get form data (for potential API integration)
+  getNotificationIcon(type) {
+    const icons = {
+      success: "✅",
+      error: "❌",
+      warning: "⚠️",
+      info: "ℹ️",
+    };
+    return icons[type] || icons.info;
+  }
+
+  getNotificationColor(type) {
+    const colors = {
+      success: "linear-gradient(135deg, #4CAF50, #45a049)",
+      error: "linear-gradient(135deg, #f44336, #d32f2f)",
+      warning: "linear-gradient(135deg, #ff9800, #f57c00)",
+      info: "linear-gradient(135deg, #2196F3, #1976D2)",
+    };
+    return colors[type] || colors.info;
+  }
+
   getFormData() {
     const form = document.getElementById("contact-form");
-    if (!form) return null;
+    if (!form) return {};
 
     const formData = new FormData(form);
     const data = {};
@@ -326,7 +409,6 @@ class ContactManager {
     return data;
   }
 
-  // Public method to reset form
   resetForm() {
     const form = document.getElementById("contact-form");
     if (form) {
@@ -341,13 +423,12 @@ class ContactManager {
   }
 }
 
-// Initialize contact manager when DOM is loaded
+// Initialize when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
-  const contactManager = new ContactManager();
-
-  // Make contact manager globally accessible
-  window.contactManager = contactManager;
+  new ContactManager();
 });
 
 // Export for module usage
-export default ContactManager;
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = ContactManager;
+}

@@ -183,8 +183,21 @@ class HeroAnimator {
   }
 
   handleDealsAction() {
-    // Navigate to deals page or show deals modal
-    window.location.href = "/deals.html";
+    // Если на главной — плавный скролл к hot-deals
+    const hotDeals = document.getElementById("hot-deals");
+    if (hotDeals) {
+      const header = document.querySelector(".site-header");
+      const headerHeight = header ? header.offsetHeight : 0;
+      const y =
+        hotDeals.getBoundingClientRect().top +
+        window.pageYOffset -
+        headerHeight -
+        12;
+      window.scrollTo({ top: y, behavior: "smooth" });
+      return;
+    }
+    // Если не на главной — переход на index.html#hot-deals
+    window.location.href = "index.html#hot-deals";
   }
 
   handleButtonHover(button) {
@@ -410,6 +423,42 @@ document.addEventListener("DOMContentLoaded", () => {
   // Check for reduced motion preference
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     heroAnimator.toggleAnimations(false);
+  }
+
+  const exploreBtn = document.querySelector(
+    '.hero-btn-primary[data-action="explore"]'
+  );
+  const dealsBtn = document.querySelector(
+    '.hero-btn-secondary[data-action="deals"]'
+  );
+
+  if (exploreBtn) {
+    exploreBtn.addEventListener("click", () => {
+      window.location.href = "gameVault.html";
+    });
+  }
+
+  if (dealsBtn) {
+    dealsBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const path = window.location.pathname.replace(/\/+/g, "/");
+      if (path !== "/" && !path.endsWith("/index.html")) {
+        window.location.href = "index.html#hot-deals";
+        return;
+      }
+      // Если на главной — плавный скролл
+      const hotDeals = document.getElementById("hot-deals");
+      if (hotDeals) {
+        const header = document.querySelector(".site-header");
+        const headerHeight = header ? header.offsetHeight : 0;
+        const y =
+          hotDeals.getBoundingClientRect().top +
+          window.pageYOffset -
+          headerHeight -
+          12;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    });
   }
 });
 
