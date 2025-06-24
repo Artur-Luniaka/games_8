@@ -189,17 +189,21 @@ class CartManager {
   showEmptyCart(container) {
     container.innerHTML = `
             <div class="empty-cart">
-                <div class="empty-cart-icon"><img src=\"assets/images/cart-icon.png\" alt=\"Cart\" style=\"width: 64px; height: 64px; filter: drop-shadow(0 0 12px #00fff7);\"></div>
+                <div class="empty-cart-icon"><img src="assets/images/cart-icon.png" alt="Cart" style="width: 64px; height: 64px; filter: drop-shadow(0 0 12px #00fff7);"></div>
                 <h2 class="empty-cart-title">Your cart is empty</h2>
                 <p class="empty-cart-text">
                     Looks like you haven't picked any games yet. Dive into the vault and discover your next masterpiece!
                 </p>
                 <div class="empty-cart-actions">
-                    <a href="/gameVault.html" class="browse-games-btn">Browse Games</a>
+                    <button class="browse-games-btn" id="browse-games-btn">Browse Games</button>
                     <a href="./" class="browse-games-btn" style="background: var(--neutral-gray);">Back to Home</a>
                 </div>
             </div>
         `;
+    const browseBtn = document.getElementById("browse-games-btn");
+    if (browseBtn) {
+      browseBtn.onclick = () => goTo("gameVault.html");
+    }
   }
 
   proceedToCheckout() {
