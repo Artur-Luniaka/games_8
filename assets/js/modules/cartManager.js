@@ -81,7 +81,7 @@ class CartManager {
                     <div class="cart-item-header">
                         <div>
                             <h3 class="cart-item-title">${item.title}</h3>
-                            <p class="cart-item-subtitle">Digital Download</p>
+                            <p class="cart-item-subtitle">Digital Edition</p>
                         </div>
                         <span class="cart-item-price">$${totalPrice}</span>
                     </div>
@@ -187,19 +187,14 @@ class CartManager {
   showEmptyCart(container) {
     container.innerHTML = `
             <div class="empty-cart">
-                <div class="empty-cart-icon">🛒</div>
+                <div class="empty-cart-icon"><img src=\"assets/images/cart-icon.png\" alt=\"Cart\" style=\"width: 64px; height: 64px; filter: drop-shadow(0 0 12px #00fff7);\"></div>
                 <h2 class="empty-cart-title">Your cart is empty</h2>
                 <p class="empty-cart-text">
-                    Looks like you haven't added any games to your cart yet. 
-                    Start exploring our collection and find your next adventure!
+                    Looks like you haven't picked any games yet. Dive into the vault and discover your next masterpiece!
                 </p>
                 <div class="empty-cart-actions">
-                    <a href="/gameVault.html" class="browse-games-btn">
-                        Browse Games
-                    </a>
-                    <a href="/index.html" class="browse-games-btn" style="background: var(--neutral-gray);">
-                        Back to Home
-                    </a>
+                    <a href="/gameVault.html" class="browse-games-btn">Browse Games</a>
+                    <a href="/index.html" class="browse-games-btn" style="background: var(--neutral-gray);">Back to Home</a>
                 </div>
             </div>
         `;

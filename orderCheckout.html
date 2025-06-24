@@ -28,12 +28,37 @@
           <h1 class="checkout-title">Complete Your Order</h1>
           <p class="checkout-subtitle">Secure checkout with instant download</p>
         </div>
-
         <div class="checkout-content">
           <div class="checkout-form-section">
             <form id="checkout-form" class="checkout-form">
               <div class="form-section">
                 <h2 class="section-title">Contact Information</h2>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="name" class="form-label">Full Name *</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      class="form-input"
+                      required
+                    />
+                    <span class="form-error" id="name-error"></span>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="phone" class="form-label">Phone Number *</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      class="form-input"
+                      required
+                    />
+                    <span class="form-error" id="phone-error"></span>
+                  </div>
+                </div>
                 <div class="form-row">
                   <div class="form-group">
                     <label for="email" class="form-label"
@@ -50,316 +75,36 @@
                   </div>
                 </div>
               </div>
-
-              <div class="form-section">
-                <h2 class="section-title">Payment Method</h2>
-                <div class="payment-methods">
-                  <div class="payment-method">
-                    <input
-                      type="radio"
-                      id="card"
-                      name="payment"
-                      value="card"
-                      class="payment-radio"
-                      checked
-                    />
-                    <label for="card" class="payment-label">
-                      <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
-                        <rect
-                          x="1"
-                          y="4"
-                          width="22"
-                          height="16"
-                          rx="2"
-                          ry="2"
-                        ></rect>
-                        <line x1="1" y1="10" x2="23" y2="10"></line>
-                      </svg>
-                      <span>Credit / Debit Card</span>
-                    </label>
-                  </div>
-                  <div class="payment-method">
-                    <input
-                      type="radio"
-                      id="paypal"
-                      name="payment"
-                      value="paypal"
-                      class="payment-radio"
-                    />
-                    <label for="paypal" class="payment-label">
-                      <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
-                        <path
-                          d="M20.067 8.478c.492.315.844.825.844 1.478 0 .653-.352 1.163-.844 1.478-.492.315-1.163.478-1.844.478H15.5v-2.956h2.723c.681 0 1.352.163 1.844.478z"
-                        />
-                        <path
-                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15H8v-6h3c1.1 0 2 .9 2 2s-.9 2-2 2zm6-2c0 1.1-.9 2-2 2h-3v-6h3c1.1 0 2 .9 2 2z"
-                        />
-                      </svg>
-                      <span>PayPal</span>
-                    </label>
-                  </div>
-                </div>
-
-                <div id="card-details" class="card-details">
-                  <div class="form-row">
-                    <div class="form-group">
-                      <label for="card-number" class="form-label"
-                        >Card Number *</label
-                      >
-                      <input
-                        type="text"
-                        id="card-number"
-                        name="cardNumber"
-                        class="form-input"
-                        placeholder="1234 5678 9012 3456"
-                        maxlength="19"
-                      />
-                      <span class="form-error" id="card-number-error"></span>
-                    </div>
-                  </div>
-
-                  <div class="form-row">
-                    <div class="form-group">
-                      <label for="expiry" class="form-label"
-                        >Expiry Date *</label
-                      >
-                      <input
-                        type="text"
-                        id="expiry"
-                        name="expiry"
-                        class="form-input"
-                        placeholder="MM/YY"
-                        maxlength="5"
-                      />
-                      <span class="form-error" id="expiry-error"></span>
-                    </div>
-                    <div class="form-group">
-                      <label for="cvv" class="form-label">CVV *</label>
-                      <input
-                        type="text"
-                        id="cvv"
-                        name="cvv"
-                        class="form-input"
-                        placeholder="123"
-                        maxlength="4"
-                      />
-                      <span class="form-error" id="cvv-error"></span>
-                    </div>
-                  </div>
-
-                  <div class="form-row">
-                    <div class="form-group">
-                      <label for="card-name" class="form-label"
-                        >Name on Card *</label
-                      >
-                      <input
-                        type="text"
-                        id="card-name"
-                        name="cardName"
-                        class="form-input"
-                      />
-                      <span class="form-error" id="card-name-error"></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-section">
-                <h2 class="section-title">Billing Address</h2>
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="firstName" class="form-label"
-                      >First Name *</label
-                    >
-                    <input
-                      type="text"
-                      id="firstName"
-                      name="firstName"
-                      class="form-input"
-                      required
-                    />
-                    <span class="form-error" id="firstName-error"></span>
-                  </div>
-                  <div class="form-group">
-                    <label for="lastName" class="form-label">Last Name *</label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      class="form-input"
-                      required
-                    />
-                    <span class="form-error" id="lastName-error"></span>
-                  </div>
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="address" class="form-label">Address *</label>
-                    <input
-                      type="text"
-                      id="address"
-                      name="address"
-                      class="form-input"
-                      required
-                    />
-                    <span class="form-error" id="address-error"></span>
-                  </div>
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="city" class="form-label">City *</label>
-                    <input
-                      type="text"
-                      id="city"
-                      name="city"
-                      class="form-input"
-                      required
-                    />
-                    <span class="form-error" id="city-error"></span>
-                  </div>
-                  <div class="form-group">
-                    <label for="state" class="form-label">State *</label>
-                    <input
-                      type="text"
-                      id="state"
-                      name="state"
-                      class="form-input"
-                      required
-                    />
-                    <span class="form-error" id="state-error"></span>
-                  </div>
-                  <div class="form-group">
-                    <label for="zipCode" class="form-label">ZIP Code *</label>
-                    <input
-                      type="text"
-                      id="zipCode"
-                      name="zipCode"
-                      class="form-input"
-                      required
-                    />
-                    <span class="form-error" id="zipCode-error"></span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-section">
-                <h2 class="section-title">Terms & Conditions</h2>
-                <div class="terms-checkbox">
-                  <input
-                    type="checkbox"
-                    id="terms"
-                    name="terms"
-                    class="form-checkbox"
-                    required
-                  />
-                  <label for="terms" class="checkbox-label">
-                    I agree to the
-                    <a href="/termsOfService.html" target="_blank"
-                      >Terms of Service</a
-                    >
-                    and
-                    <a href="/privacyPolicy.html" target="_blank"
-                      >Privacy Policy</a
-                    >
-                    *
-                  </label>
-                </div>
-                <div class="terms-checkbox">
-                  <input
-                    type="checkbox"
-                    id="newsletter"
-                    name="newsletter"
-                    class="form-checkbox"
-                  />
-                  <label for="newsletter" class="checkbox-label">
-                    Subscribe to our newsletter for updates and exclusive offers
-                  </label>
-                </div>
-              </div>
-
-              <div class="form-actions">
-                <button type="button" id="back-to-cart-btn" class="back-btn">
-                  Back to Cart
+              <div class="summary-actions">
+                <button id="place-order-btn" class="checkout-btn" type="submit">
+                  Complete Purchase
                 </button>
                 <button
-                  type="submit"
-                  id="place-order-btn"
-                  class="place-order-btn"
+                  id="back-to-cart-btn"
+                  class="continue-shopping-btn"
+                  type="button"
                 >
-                  Place Order
+                  Back to Cart
                 </button>
               </div>
             </form>
           </div>
-
-          <div class="order-summary-section">
-            <div class="order-summary">
+          <div class="cart-summary-section">
+            <div class="cart-summary">
               <h2 class="summary-title">Order Summary</h2>
-
-              <div id="order-items" class="order-items">
-                <!-- Order items will be loaded here -->
-              </div>
-
-              <div class="order-totals">
-                <div class="total-item">
+              <div id="order-items"></div>
+              <div class="summary-items">
+                <div class="summary-item">
                   <span>Subtotal</span>
                   <span id="order-subtotal">$0.00</span>
                 </div>
-                <div class="total-item">
+                <div class="summary-item">
                   <span>Tax</span>
                   <span id="order-tax">$0.00</span>
                 </div>
-                <div class="total-item total">
-                  <span>Total</span>
+                <div class="summary-item total">
+                  <span>Total Due</span>
                   <span id="order-total">$0.00</span>
-                </div>
-              </div>
-
-              <div class="order-benefits">
-                <div class="benefit-item">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span>Instant Download</span>
-                </div>
-                <div class="benefit-item">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span>30-Day Refund</span>
-                </div>
-                <div class="benefit-item">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span>Secure Payment</span>
                 </div>
               </div>
             </div>

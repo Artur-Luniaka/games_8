@@ -183,77 +183,27 @@ class CheckoutManager {
     let errorMessage = "";
 
     switch (fieldName) {
+      case "name":
+        if (!value) {
+          errorMessage = "Name is required";
+          isValid = false;
+        }
+        break;
+      case "phone":
+        if (!value) {
+          errorMessage = "Phone number is required";
+          isValid = false;
+        } else if (!/^\+?[0-9\-\s]{7,20}$/.test(value)) {
+          errorMessage = "Please enter a valid phone number";
+          isValid = false;
+        }
+        break;
       case "email":
         if (!value) {
           errorMessage = "Email is required";
           isValid = false;
         } else if (!this.isValidEmail(value)) {
           errorMessage = "Please enter a valid email address";
-          isValid = false;
-        }
-        break;
-
-      case "cardNumber":
-        if (document.getElementById("card").checked) {
-          const cardNumber = value.replace(/\s/g, "");
-          if (!cardNumber) {
-            errorMessage = "Card number is required";
-            isValid = false;
-          } else if (!this.isValidCardNumber(cardNumber)) {
-            errorMessage = "Please enter a valid card number";
-            isValid = false;
-          }
-        }
-        break;
-
-      case "expiry":
-        if (document.getElementById("card").checked) {
-          if (!value) {
-            errorMessage = "Expiry date is required";
-            isValid = false;
-          } else if (!this.isValidExpiryDate(value)) {
-            errorMessage = "Please enter a valid expiry date (MM/YY)";
-            isValid = false;
-          }
-        }
-        break;
-
-      case "cvv":
-        if (document.getElementById("card").checked) {
-          if (!value) {
-            errorMessage = "CVV is required";
-            isValid = false;
-          } else if (!this.isValidCVV(value)) {
-            errorMessage = "Please enter a valid CVV";
-            isValid = false;
-          }
-        }
-        break;
-
-      case "cardName":
-        if (document.getElementById("card").checked) {
-          if (!value) {
-            errorMessage = "Name on card is required";
-            isValid = false;
-          }
-        }
-        break;
-
-      case "firstName":
-      case "lastName":
-      case "address":
-      case "city":
-      case "state":
-      case "zipCode":
-        if (!value) {
-          errorMessage = `${this.getFieldLabel(fieldName)} is required`;
-          isValid = false;
-        }
-        break;
-
-      case "terms":
-        if (!field.checked) {
-          errorMessage = "You must agree to the terms and conditions";
           isValid = false;
         }
         break;
@@ -271,52 +221,6 @@ class CheckoutManager {
   isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
-  }
-
-  isValidCardNumber(cardNumber) {
-    // Luhn algorithm for card validation
-    if (!/^\d{13,19}$/.test(cardNumber)) return false;
-
-    let sum = 0;
-    let isEven = false;
-
-    for (let i = cardNumber.length - 1; i >= 0; i--) {
-      let digit = parseInt(cardNumber[i]);
-
-      if (isEven) {
-        digit *= 2;
-        if (digit > 9) {
-          digit -= 9;
-        }
-      }
-
-      sum += digit;
-      isEven = !isEven;
-    }
-
-    return sum % 10 === 0;
-  }
-
-  isValidExpiryDate(expiry) {
-    const regex = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
-    if (!regex.test(expiry)) return false;
-
-    const [, month, year] = expiry.match(regex);
-    const currentDate = new Date();
-    const currentYear = currentDate.getFullYear() % 100;
-    const currentMonth = currentDate.getMonth() + 1;
-
-    const expYear = parseInt(year);
-    const expMonth = parseInt(month);
-
-    if (expYear < currentYear) return false;
-    if (expYear === currentYear && expMonth < currentMonth) return false;
-
-    return true;
-  }
-
-  isValidCVV(cvv) {
-    return /^\d{3,4}$/.test(cvv);
   }
 
   getFieldLabel(fieldName) {
@@ -360,17 +264,6 @@ class CheckoutManager {
       }
     });
 
-    // Additional validation for card details if card payment is selected
-    if (document.getElementById("card").checked) {
-      const cardFields = ["cardNumber", "expiry", "cvv", "cardName"];
-      cardFields.forEach((fieldName) => {
-        const field = document.getElementById(fieldName);
-        if (field && !this.validateField(field)) {
-          isValid = false;
-        }
-      });
-    }
-
     return isValid;
   }
 
@@ -387,8 +280,8 @@ class CheckoutManager {
     }
 
     try {
-      // Simulate payment processing
-      await this.simulatePaymentProcessing();
+      // Симуляция обработки заказа (без оплаты)
+      await new Promise((resolve) => setTimeout(resolve, 1200));
 
       // Show success state
       this.showSuccessState();
@@ -414,42 +307,37 @@ class CheckoutManager {
     }
   }
 
-  async simulatePaymentProcessing() {
-    return new Promise((resolve, reject) => {
-      // Simulate network delay
-      setTimeout(() => {
-        // Simulate 95% success rate
-        if (Math.random() > 0.05) {
-          resolve();
-        } else {
-          reject(new Error("Payment declined"));
-        }
-      }, 2000);
-    });
-  }
-
   showSuccessState() {
-    const checkoutContent = document.querySelector(".checkout-content");
-    if (!checkoutContent) return;
-
-    checkoutContent.innerHTML = `
-            <div class="checkout-success">
-                <div class="success-icon">✅</div>
-                <h2 class="success-title">Order Successful!</h2>
-                <p class="success-text">
-                    Thank you for your purchase! Your games are ready for download. 
-                    You will receive a confirmation email shortly.
-                </p>
-                <div class="success-actions">
-                    <a href="/gameVault.html" class="download-btn">
-                        Continue Shopping
-                    </a>
-                    <a href="/index.html" class="download-btn" style="background: var(--neutral-gray);">
-                        Back to Home
-                    </a>
-                </div>
+    // Центрируем весь main, а не только .checkout-content
+    const main = document.querySelector(".checkout-main");
+    if (main) {
+      main.innerHTML = `
+        <div class="checkout-success centered-success">
+            <div class="success-icon">✅</div>
+            <h2 class="success-title">Thank you for your order!</h2>
+            <p class="success-text">
+                Your order has been placed successfully.<br>
+                You will receive an email with your digital game keys and download instructions shortly.
+            </p>
+            <div class="success-actions">
+                <a href="/gameVault.html" class="download-btn success-btn-main">
+                    Go to Game Library
+                </a>
+                <a href="/index.html" class="download-btn success-btn-secondary">
+                    Back to Store
+                </a>
             </div>
-        `;
+        </div>
+      `;
+    }
+    // Очищаем корзину в localStorage и обновляем счетчик
+    localStorage.removeItem("pixelVaultCart");
+    if (
+      window.headerManager &&
+      typeof window.headerManager.refreshCartCount === "function"
+    ) {
+      window.headerManager.refreshCartCount();
+    }
   }
 
   showErrorState(message) {
