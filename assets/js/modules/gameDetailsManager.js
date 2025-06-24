@@ -70,24 +70,23 @@ class GameDetailsManager {
 
   createGameHeader() {
     const starsHTML = this.generateStars(this.game.rating);
-
     return `
-            <div class="game-header">
-                <div class="game-hero">
-                    <img src="${this.game.image}" alt="${this.game.title}" class="game-hero-image">
-                    <div class="game-hero-overlay">
-                        <div class="game-hero-content">
-                            <h1 class="game-title">${this.game.title}</h1>
-                            <p class="game-subtitle">${this.game.subtitle}</p>
-                            <div class="game-rating">
-                                <span class="stars">${starsHTML}</span>
-                                <span class="rating-text">${this.game.rating}/5</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div class="game-header">
+        <div class="game-hero">
+          <img src="${this.game.image}" alt="${this.game.title}" class="game-hero-image">
+          <div class="game-hero-overlay">
+            <div class="game-hero-content">
+              <h1 class="game-title">${this.game.title}</h1>
+              <p class="game-subtitle">${this.game.subtitle}</p>
             </div>
-        `;
+            <div class="game-rating game-rating-bottom">
+              <span class="stars">${starsHTML}</span>
+              <span class="rating-text">${this.game.rating}/5</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
   }
 
   createGameInfo() {
@@ -119,31 +118,31 @@ class GameDetailsManager {
             <div class="game-info">
                 <div class="game-meta">
                     <div class="meta-item">
-                        <span class="meta-label">Genre</span>
+                        <span class="meta-label">🎮 Genre</span>
                         <span class="meta-value">${this.game.genre}</span>
                     </div>
                     <div class="meta-item">
-                        <span class="meta-label">Platform</span>
+                        <span class="meta-label">🖥️ Platform</span>
                         <span class="meta-value">${this.game.platforms.join(
                           ", "
                         )}</span>
                     </div>
                     <div class="meta-item">
-                        <span class="meta-label">Release Date</span>
+                        <span class="meta-label">📅 Release Date</span>
                         <span class="meta-value">${new Date(
                           this.game.releaseDate
                         ).toLocaleDateString()}</span>
                     </div>
                     <div class="meta-item">
-                        <span class="meta-label">Developer</span>
+                        <span class="meta-label">👨‍💻 Developer</span>
                         <span class="meta-value">${this.game.developer}</span>
                     </div>
                     <div class="meta-item">
-                        <span class="meta-label">Publisher</span>
+                        <span class="meta-label">🏢 Publisher</span>
                         <span class="meta-value">${this.game.publisher}</span>
                     </div>
                     <div class="meta-item">
-                        <span class="meta-label">Price</span>
+                        <span class="meta-label">💰 Price</span>
                         <span class="meta-value">
                             $${this.game.price.toFixed(2)}
                             ${originalPriceHTML}
@@ -152,23 +151,46 @@ class GameDetailsManager {
                     </div>
                 </div>
                 
+                <p class="game-description">${this.game.description}</p>
+                
                 <div class="game-tags">
                     ${tagsHTML}
                 </div>
-                
-                <p class="game-description">${this.game.description}</p>
             </div>
         `;
   }
 
   createGameFeatures() {
+    const featureIcons = {
+      "Open-world RPG": "🌍",
+      "First-person perspective": "👁️",
+      "Cyberpunk setting": "🤖",
+      "Character customization": "👤",
+      "Multiple endings": "🎭",
+      "Open-world action RPG": "🗺️",
+      "Challenging combat": "⚔️",
+      "Vast fantasy world": "🏰",
+      "Multiplayer features": "👥",
+      "Character building": "📈",
+      "Epic action combat": "🔥",
+      "Norse mythology": "⚡",
+      "Father-son story": "👨‍👦",
+      "Stunning visuals": "✨",
+      "Emotional narrative": "💔",
+      "Open-world western": "🤠",
+      "Epic story": "📖",
+      "Realistic graphics": "🎨",
+      "Online multiplayer": "🌐",
+      "Horse bonding": "🐎",
+    };
+
     const featuresHTML = this.game.features
       .map(
         (feature) => `
             <div class="feature-item">
-                <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
+                <span class="feature-icon">${
+                  featureIcons[feature] || "✨"
+                }</span>
                 <span class="feature-text">${feature}</span>
             </div>
         `
@@ -177,7 +199,7 @@ class GameDetailsManager {
 
     return `
             <div class="game-features">
-                <h2 class="features-title">Key Features</h2>
+                <h2 class="features-title">🚀 Key Features</h2>
                 <div class="features-grid">
                     ${featuresHTML}
                 </div>
@@ -186,30 +208,7 @@ class GameDetailsManager {
   }
 
   createGameGallery() {
-    if (!this.game.screenshots || this.game.screenshots.length === 0) {
-      return "";
-    }
-
-    const screenshotsHTML = this.game.screenshots
-      .map(
-        (screenshot, index) => `
-            <div class="gallery-item" data-index="${index}">
-                <img src="${screenshot}" alt="Screenshot ${
-          index + 1
-        }" class="gallery-image">
-            </div>
-        `
-      )
-      .join("");
-
-    return `
-            <div class="game-gallery">
-                <h2 class="gallery-title">Screenshots</h2>
-                <div class="gallery-grid">
-                    ${screenshotsHTML}
-                </div>
-            </div>
-        `;
+    return "";
   }
 
   createSystemRequirements() {
@@ -217,12 +216,8 @@ class GameDetailsManager {
       return "";
     }
 
-    const requirements = this.game.systemRequirements;
-
     const createRequirementsSection = (title, reqs) => {
-      if (!reqs) return "";
-
-      const itemsHTML = Object.entries(reqs)
+      const requirementsHTML = Object.entries(reqs)
         .map(
           ([key, value]) => `
                 <div class="requirement-item">
@@ -236,25 +231,25 @@ class GameDetailsManager {
         .join("");
 
       return `
-                <div class="requirements-section">
-                    <h3 class="section-title">${title}</h3>
-                    ${itemsHTML}
-                </div>
-            `;
+            <div class="requirements-section">
+                <h3 class="section-title">${title}</h3>
+                ${requirementsHTML}
+            </div>
+        `;
     };
 
     const minimumHTML = createRequirementsSection(
-      "Minimum Requirements",
-      requirements.minimum
+      "⚡ Minimum Requirements",
+      this.game.systemRequirements.minimum
     );
     const recommendedHTML = createRequirementsSection(
-      "Recommended Requirements",
-      requirements.recommended
+      "🚀 Recommended Requirements",
+      this.game.systemRequirements.recommended
     );
 
     return `
             <div class="system-requirements">
-                <h2 class="requirements-title">System Requirements</h2>
+                <h2 class="requirements-title">💻 System Requirements</h2>
                 <div class="requirements-grid">
                     ${minimumHTML}
                     ${recommendedHTML}
@@ -266,52 +261,36 @@ class GameDetailsManager {
   createPurchaseSection() {
     const discountHTML =
       this.game.discount > 0
-        ? `
-            <span class="discount-badge">-${this.game.discount}%</span>
-        `
+        ? `<span class="discount-badge">-${this.game.discount}%</span>`
         : "";
-
     const originalPriceHTML =
       this.game.originalPrice > this.game.price
-        ? `
-            <span class="original-price">$${this.game.originalPrice.toFixed(
-              2
-            )}</span>
-        `
+        ? `<span class="original-price">$${this.game.originalPrice.toFixed(
+            2
+          )}</span>`
         : "";
-
-    const isInWishlist = this.checkWishlistStatus();
-    const wishlistBtnText = isInWishlist ? "♥" : "♡";
-    const wishlistBtnClass = isInWishlist
-      ? "wishlist-btn active"
-      : "wishlist-btn";
-
     return `
-            <div class="purchase-section">
-                <div class="purchase-header">
-                    <div class="purchase-price">
-                        <span class="current-price">$${this.game.price.toFixed(
-                          2
-                        )}</span>
-                        ${originalPriceHTML}
-                        ${discountHTML}
-                    </div>
-                </div>
-                
-                <div class="purchase-actions">
-                    <button class="add-to-cart-btn" data-game-id="${
-                      this.game.id
-                    }">
-                        Add to Cart
-                    </button>
-                    <button class="${wishlistBtnClass}" data-game-id="${
-      this.game.id
-    }">
-                        ${wishlistBtnText}
-                    </button>
-                </div>
-            </div>
-        `;
+      <div class="purchase-section">
+        <div class="purchase-header">
+          <h2>🛒 Purchase Game</h2>
+        </div>
+        <div class="purchase-price">
+          <span class="current-price">$${this.game.price.toFixed(2)}</span>
+          ${originalPriceHTML}
+          ${discountHTML}
+        </div>
+        <div class="purchase-actions">
+          <button class="add-to-cart-btn" data-game-id="${
+            this.game.id
+          }">🛒 Add to Cart</button>
+        </div>
+        <div class="purchase-benefits">
+          <div class="benefit-item"><span>⚡</span><span>Instant Download</span></div>
+          <div class="benefit-item"><span>🔒</span><span>Secure Payment</span></div>
+          <div class="benefit-item"><span>🔄</span><span>30-Day Refund</span></div>
+        </div>
+      </div>
+    `;
   }
 
   setupEventListeners() {
@@ -320,14 +299,6 @@ class GameDetailsManager {
     if (addToCartBtn) {
       addToCartBtn.addEventListener("click", () => {
         this.addToCart();
-      });
-    }
-
-    // Wishlist button
-    const wishlistBtn = document.querySelector(".wishlist-btn");
-    if (wishlistBtn) {
-      wishlistBtn.addEventListener("click", () => {
-        this.toggleWishlist(wishlistBtn);
       });
     }
   }
@@ -343,7 +314,7 @@ class GameDetailsManager {
   }
 
   openGalleryModal(initialIndex) {
-    if (!this.game.screenshots) return;
+    if (!this.game.gallery) return;
 
     const modal = document.createElement("div");
     modal.className = "gallery-modal";
@@ -355,11 +326,11 @@ class GameDetailsManager {
                     <button class="modal-next">&gt;</button>
                     <div class="modal-image-container">
                         <img src="${
-                          this.game.screenshots[initialIndex]
+                          this.game.gallery[initialIndex]
                         }" alt="Screenshot" class="modal-image">
                     </div>
                     <div class="modal-counter">${initialIndex + 1} / ${
-      this.game.screenshots.length
+      this.game.gallery.length
     }</div>
                 </div>
             </div>
@@ -472,22 +443,22 @@ class GameDetailsManager {
     const counter = modal.querySelector(".modal-counter");
 
     const updateImage = (index) => {
-      image.src = this.game.screenshots[index];
-      counter.textContent = `${index + 1} / ${this.game.screenshots.length}`;
+      image.src = this.game.gallery[index];
+      counter.textContent = `${index + 1} / ${this.game.gallery.length}`;
     };
 
     if (prevBtn) {
       prevBtn.addEventListener("click", () => {
         currentIndex =
-          (currentIndex - 1 + this.game.screenshots.length) %
-          this.game.screenshots.length;
+          (currentIndex - 1 + this.game.gallery.length) %
+          this.game.gallery.length;
         updateImage(currentIndex);
       });
     }
 
     if (nextBtn) {
       nextBtn.addEventListener("click", () => {
-        currentIndex = (currentIndex + 1) % this.game.screenshots.length;
+        currentIndex = (currentIndex + 1) % this.game.gallery.length;
         updateImage(currentIndex);
       });
     }
@@ -515,12 +486,12 @@ class GameDetailsManager {
           break;
         case "ArrowLeft":
           currentIndex =
-            (currentIndex - 1 + this.game.screenshots.length) %
-            this.game.screenshots.length;
+            (currentIndex - 1 + this.game.gallery.length) %
+            this.game.gallery.length;
           updateImage(currentIndex);
           break;
         case "ArrowRight":
-          currentIndex = (currentIndex + 1) % this.game.screenshots.length;
+          currentIndex = (currentIndex + 1) % this.game.gallery.length;
           updateImage(currentIndex);
           break;
       }
@@ -558,37 +529,6 @@ class GameDetailsManager {
 
     // Show success notification
     this.showNotification(`${this.game.title} added to cart!`, "success");
-  }
-
-  toggleWishlist(button) {
-    // Get current wishlist from localStorage
-    let wishlist = JSON.parse(localStorage.getItem("pixelVaultWishlist")) || [];
-
-    const isInWishlist = wishlist.includes(this.game.id);
-
-    if (isInWishlist) {
-      wishlist = wishlist.filter((id) => id !== this.game.id);
-      button.textContent = "♡";
-      button.classList.remove("active");
-    } else {
-      wishlist.push(this.game.id);
-      button.textContent = "♥";
-      button.classList.add("active");
-    }
-
-    localStorage.setItem("pixelVaultWishlist", JSON.stringify(wishlist));
-
-    const message = isInWishlist
-      ? `${this.game.title} removed from wishlist`
-      : `${this.game.title} added to wishlist`;
-
-    this.showNotification(message, "info");
-  }
-
-  checkWishlistStatus() {
-    const wishlist =
-      JSON.parse(localStorage.getItem("pixelVaultWishlist")) || [];
-    return wishlist.includes(this.game.id);
   }
 
   generateStars(rating) {
