@@ -26,8 +26,8 @@ class CartManager {
     localStorage.setItem("pixelVaultCart", JSON.stringify(this.cart));
 
     // Update header cart count
-    if (window.pixelVaultHeader) {
-      window.pixelVaultHeader.refreshCartCount();
+    if (window.headerManager) {
+      window.headerManager.refreshCartCount();
     }
   }
 

@@ -13,6 +13,7 @@ class HeaderManager {
   async init() {
     try {
       await this.loadHeaderContent();
+      this.refreshCartCount();
       this.setupEventListeners();
       this.initializeScrollEffects();
       this.isLoaded = true;
@@ -78,6 +79,44 @@ class HeaderManager {
     const navLinks = document.querySelectorAll(".nav-link, .mobile-nav-link");
     navLinks.forEach((link) => {
       link.addEventListener("click", (event) => {
+        if (
+          link.getAttribute("href") === "index.html#hot-deals" ||
+          link.getAttribute("href") === "#hot-deals"
+        ) {
+          event.preventDefault();
+          // Закрыть мобильное меню, если оно открыто
+          const mobileToggle = document.getElementById("mobile-menu-toggle");
+          const mobileMenu = document.getElementById("mobile-menu");
+          if (
+            mobileToggle &&
+            mobileMenu &&
+            mobileMenu.classList.contains("active")
+          ) {
+            this.closeMobileMenu(mobileToggle, mobileMenu);
+          }
+          if (
+            window.location.pathname.endsWith("index.html") ||
+            window.location.pathname === "/" ||
+            window.location.pathname === ""
+          ) {
+            // Уже на главной — плавно скроллим
+            const hotDeals = document.getElementById("hot-deals");
+            if (hotDeals) {
+              const header = document.querySelector(".site-header");
+              const headerHeight = header ? header.offsetHeight : 0;
+              const y =
+                hotDeals.getBoundingClientRect().top +
+                window.pageYOffset -
+                headerHeight -
+                12;
+              window.scrollTo({ top: y, behavior: "smooth" });
+            }
+          } else {
+            // Не на главной — переходим на главную с якорем
+            window.location.href = "index.html#hot-deals";
+          }
+          return;
+        }
         this.handleNavigationClick(event, link);
       });
     });
@@ -227,8 +266,15 @@ class HeaderManager {
 
   refreshCartCount() {
     // Get cart count from localStorage
-    const cart = JSON.parse(localStorage.getItem("gameVaultCart") || "[]");
-    this.updateCartCount(cart.length);
+    const cartObj = JSON.parse(
+      localStorage.getItem("pixelVaultCart") || '{"items":[]}'
+    );
+    const count = Array.isArray(cartObj)
+      ? cartObj.length
+      : cartObj.items
+      ? cartObj.items.reduce((sum, item) => sum + item.quantity, 0)
+      : 0;
+    this.updateCartCount(count);
   }
 
   // Public method to refresh header
@@ -247,3 +293,27 @@ window.headerManager = headerManager;
 
 // Export for use in other modules
 export { headerManager };
+
+// Плавная прокрутка к hot-deals при загрузке index.html с якорем
+if (
+  window.location.hash === "#hot-deals" &&
+  (window.location.pathname.endsWith("index.html") ||
+    window.location.pathname === "/" ||
+    window.location.pathname === "")
+) {
+  window.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      const hotDeals = document.getElementById("hot-deals");
+      if (hotDeals) {
+        const header = document.querySelector(".site-header");
+        const headerHeight = header ? header.offsetHeight : 0;
+        const y =
+          hotDeals.getBoundingClientRect().top +
+          window.pageYOffset -
+          headerHeight -
+          12;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }, 100);
+  });
+}

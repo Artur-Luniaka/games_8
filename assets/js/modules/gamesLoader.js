@@ -208,15 +208,18 @@ class GamesLoader {
     if (!game) return;
 
     // Get current cart
-    const cart = JSON.parse(localStorage.getItem("gameVaultCart") || "[]");
+    let cartObj = JSON.parse(
+      localStorage.getItem("pixelVaultCart") || '{"items":[]}'
+    );
+    if (!cartObj.items) cartObj = { items: [] };
 
     // Check if game is already in cart
-    const existingItem = cart.find((item) => item.id === gameId);
+    const existingItem = cartObj.items.find((item) => item.id === gameId);
 
     if (existingItem) {
       existingItem.quantity += 1;
     } else {
-      cart.push({
+      cartObj.items.push({
         id: gameId,
         title: game.title,
         price: game.price || 59.99,
@@ -226,7 +229,7 @@ class GamesLoader {
     }
 
     // Save to localStorage
-    localStorage.setItem("gameVaultCart", JSON.stringify(cart));
+    localStorage.setItem("pixelVaultCart", JSON.stringify(cartObj));
 
     // Show notification
     this.showNotification("Game added to cart!", "success");

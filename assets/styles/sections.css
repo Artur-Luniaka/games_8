@@ -240,13 +240,21 @@
 .deal-image {
   width: 100%;
   height: 210px;
-  object-fit: cover;
   border-radius: 18px;
   margin-bottom: 24px;
   box-shadow: 0 0 32px #00fff799, 0 0 0 4px #ff6b6b55;
   border: 2px solid #00fff7;
   background: #181a2b;
   transition: box-shadow 0.3s, border-color 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.deal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
 }
 .deal-card:hover .deal-image {
   box-shadow: 0 0 64px #ff6b6bcc, 0 0 0 6px #00fff7cc;
@@ -468,6 +476,9 @@
 }
 
 .dimension-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   background: rgba(255, 255, 255, 0.03);
   border-radius: 25px;
   padding: 40px 30px;
@@ -573,6 +584,7 @@
 }
 
 .dimension-stats {
+  margin-top: auto;
   display: flex;
   justify-content: space-around;
   gap: 20px;
@@ -815,6 +827,9 @@
 }
 
 .arsenal-category {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 20px;
   padding: 40px 30px;
@@ -868,6 +883,7 @@
 }
 
 .arsenal-count {
+  margin-top: auto;
   background: linear-gradient(45deg, #ffa500, #ff8c00);
   color: white;
   padding: 10px 20px;

@@ -552,8 +552,8 @@ class GameDetailsManager {
     localStorage.setItem("pixelVaultCart", JSON.stringify(cart));
 
     // Update header cart count
-    if (window.pixelVaultHeader) {
-      window.pixelVaultHeader.refreshCartCount();
+    if (window.headerManager) {
+      window.headerManager.refreshCartCount();
     }
 
     // Show success notification

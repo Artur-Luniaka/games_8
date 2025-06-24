@@ -4,18 +4,8 @@
 class GameVaultManager {
   constructor() {
     this.games = [];
-    this.filteredGames = [];
     this.currentPage = 1;
-    this.gamesPerPage = 12;
-    this.currentView = "grid";
-    this.filters = {
-      search: "",
-      genre: "",
-      platform: "",
-      priceRange: "",
-      sortBy: "featured",
-    };
-
+    this.gamesPerPage = 6;
     this.init();
   }
 
@@ -23,7 +13,7 @@ class GameVaultManager {
     await this.loadGames();
     this.setupEventListeners();
     this.renderGames();
-    this.updateResultsCount();
+    this.updateLoadMoreButton();
   }
 
   async loadGames() {
@@ -32,10 +22,8 @@ class GameVaultManager {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
       const data = await response.json();
       this.games = data.games;
-      this.filteredGames = [...this.games];
     } catch (error) {
       console.error("Failed to load games:", error);
       this.showErrorState();
@@ -43,74 +31,6 @@ class GameVaultManager {
   }
 
   setupEventListeners() {
-    // Search functionality
-    const searchInput = document.getElementById("game-search");
-    const searchBtn = document.querySelector(".search-btn");
-
-    if (searchInput) {
-      searchInput.addEventListener("input", (event) => {
-        this.filters.search = event.target.value.toLowerCase();
-        this.applyFilters();
-      });
-    }
-
-    if (searchBtn) {
-      searchBtn.addEventListener("click", () => {
-        this.applyFilters();
-      });
-    }
-
-    // Filter functionality
-    const genreFilter = document.getElementById("genre-filter");
-    const platformFilter = document.getElementById("platform-filter");
-    const priceFilter = document.getElementById("price-filter");
-    const sortFilter = document.getElementById("sort-filter");
-
-    if (genreFilter) {
-      genreFilter.addEventListener("change", (event) => {
-        this.filters.genre = event.target.value;
-        this.applyFilters();
-      });
-    }
-
-    if (platformFilter) {
-      platformFilter.addEventListener("change", (event) => {
-        this.filters.platform = event.target.value;
-        this.applyFilters();
-      });
-    }
-
-    if (priceFilter) {
-      priceFilter.addEventListener("change", (event) => {
-        this.filters.priceRange = event.target.value;
-        this.applyFilters();
-      });
-    }
-
-    if (sortFilter) {
-      sortFilter.addEventListener("change", (event) => {
-        this.filters.sortBy = event.target.value;
-        this.applyFilters();
-      });
-    }
-
-    // Clear filters
-    const clearFiltersBtn = document.getElementById("clear-filters");
-    if (clearFiltersBtn) {
-      clearFiltersBtn.addEventListener("click", () => {
-        this.clearFilters();
-      });
-    }
-
-    // View toggle
-    const viewBtns = document.querySelectorAll(".view-btn");
-    viewBtns.forEach((btn) => {
-      btn.addEventListener("click", (event) => {
-        this.toggleView(event.target.dataset.view);
-      });
-    });
-
-    // Load more
     const loadMoreBtn = document.getElementById("load-more-btn");
     if (loadMoreBtn) {
       loadMoreBtn.addEventListener("click", () => {
@@ -119,217 +39,77 @@ class GameVaultManager {
     }
   }
 
-  applyFilters() {
-    this.filteredGames = this.games.filter((game) => {
-      // Search filter
-      if (this.filters.search) {
-        const searchTerm = this.filters.search.toLowerCase();
-        const matchesSearch =
-          game.title.toLowerCase().includes(searchTerm) ||
-          game.description.toLowerCase().includes(searchTerm) ||
-          game.genre.toLowerCase().includes(searchTerm) ||
-          game.tags.some((tag) => tag.toLowerCase().includes(searchTerm));
-        if (!matchesSearch) return false;
-      }
-
-      // Genre filter
-      if (
-        this.filters.genre &&
-        game.genre.toLowerCase() !== this.filters.genre.toLowerCase()
-      ) {
-        return false;
-      }
-
-      // Platform filter
-      if (
-        this.filters.platform &&
-        !game.platforms.some(
-          (platform) =>
-            platform.toLowerCase() === this.filters.platform.toLowerCase()
-        )
-      ) {
-        return false;
-      }
-
-      // Price range filter
-      if (this.filters.priceRange) {
-        const [min, max] = this.filters.priceRange.split("-").map(Number);
-        if (max && (game.price < min || game.price > max)) {
-          return false;
-        } else if (!max && game.price < min) {
-          return false;
-        }
-      }
-
-      return true;
-    });
-
-    // Sort games
-    this.sortGames();
-
-    // Reset pagination
-    this.currentPage = 1;
-
-    // Update display
-    this.renderGames();
-    this.updateResultsCount();
-    this.updateLoadMoreButton();
-  }
-
-  sortGames() {
-    switch (this.filters.sortBy) {
-      case "newest":
-        this.filteredGames.sort(
-          (a, b) => new Date(b.releaseDate) - new Date(a.releaseDate)
-        );
-        break;
-      case "price-low":
-        this.filteredGames.sort((a, b) => a.price - b.price);
-        break;
-      case "price-high":
-        this.filteredGames.sort((a, b) => b.price - a.price);
-        break;
-      case "rating":
-        this.filteredGames.sort((a, b) => b.rating - a.rating);
-        break;
-      case "featured":
-      default:
-        this.filteredGames.sort((a, b) => {
-          if (a.isFeatured && !b.isFeatured) return -1;
-          if (!a.isFeatured && b.isFeatured) return 1;
-          return b.rating - a.rating;
-        });
-        break;
-    }
-  }
-
-  clearFilters() {
-    this.filters = {
-      search: "",
-      genre: "",
-      platform: "",
-      priceRange: "",
-      sortBy: "featured",
-    };
-
-    // Reset form elements
-    const searchInput = document.getElementById("game-search");
-    const genreFilter = document.getElementById("genre-filter");
-    const platformFilter = document.getElementById("platform-filter");
-    const priceFilter = document.getElementById("price-filter");
-    const sortFilter = document.getElementById("sort-filter");
-
-    if (searchInput) searchInput.value = "";
-    if (genreFilter) genreFilter.value = "";
-    if (platformFilter) platformFilter.value = "";
-    if (priceFilter) priceFilter.value = "";
-    if (sortFilter) sortFilter.value = "featured";
-
-    this.applyFilters();
-  }
-
-  toggleView(view) {
-    this.currentView = view;
-
-    // Update view buttons
-    const viewBtns = document.querySelectorAll(".view-btn");
-    viewBtns.forEach((btn) => {
-      btn.classList.toggle("active", btn.dataset.view === view);
-    });
-
-    // Update container class
-    const container = document.getElementById("games-container");
-    if (container) {
-      container.className = `games-container ${view}-view`;
-    }
-
-    // Re-render games with new view
-    this.renderGames();
-  }
-
   renderGames() {
     const container = document.getElementById("games-container");
     if (!container) return;
-
-    const startIndex = (this.currentPage - 1) * this.gamesPerPage;
-    const endIndex = startIndex + this.gamesPerPage;
-    const gamesToShow = this.filteredGames.slice(startIndex, endIndex);
-
+    const startIndex = 0;
+    const endIndex = this.currentPage * this.gamesPerPage;
+    const gamesToShow = this.games.slice(startIndex, endIndex);
     if (gamesToShow.length === 0) {
       this.showEmptyState(container);
       return;
     }
-
     const gamesHTML = gamesToShow
       .map((game) => this.createGameCard(game))
       .join("");
     container.innerHTML = gamesHTML;
-
-    // Add event listeners to new game cards
     this.setupGameCardListeners();
+    this.updateLoadMoreButton();
+  }
+
+  loadMoreGames() {
+    this.currentPage += 1;
+    this.renderGames();
+  }
+
+  updateLoadMoreButton() {
+    const loadMoreBtn = document.getElementById("load-more-btn");
+    if (!loadMoreBtn) return;
+    const totalShown = this.currentPage * this.gamesPerPage;
+    if (totalShown >= this.games.length) {
+      loadMoreBtn.style.display = "none";
+    } else {
+      loadMoreBtn.style.display = "inline-block";
+    }
   }
 
   createGameCard(game) {
     const discountHTML =
       game.discount > 0
-        ? `
-            <span class="discount-badge">-${game.discount}%</span>
-        `
+        ? `<span class="catalog-discount-badge">-${game.discount}%</span>`
         : "";
-
     const originalPriceHTML =
       game.originalPrice > game.price
-        ? `
-            <span class="original-price">$${game.originalPrice.toFixed(
-              2
-            )}</span>
-        `
+        ? `<span class="catalog-original-price">$${game.originalPrice.toFixed(
+            2
+          )}</span>`
         : "";
-
     const starsHTML = this.generateStars(game.rating);
-
     return `
-            <div class="game-card" data-game-id="${game.id}">
-                <img src="${game.image}" alt="${
+      <div class="game-card catalog-card" data-game-id="${game.id}">
+        <div class="catalog-card-image-wrap">
+          <img src="${game.image}" alt="${
       game.title
-    }" class="game-card-image">
-                <div class="game-card-content">
-                    <div class="game-card-header">
-                        <div>
-                            <h3 class="game-card-title">${game.title}</h3>
-                            <p class="game-card-subtitle">${game.subtitle}</p>
-                        </div>
-                        <span class="game-card-genre">${game.genre}</span>
-                    </div>
-                    
-                    <div class="game-card-rating">
-                        <span class="stars">${starsHTML}</span>
-                        <span class="rating-text">${game.rating}/5</span>
-                    </div>
-                    
-                    <div class="game-card-price">
-                        <span class="current-price">$${game.price.toFixed(
-                          2
-                        )}</span>
-                        ${originalPriceHTML}
-                        ${discountHTML}
-                    </div>
-                    
-                    <div class="game-card-actions">
-                        <button class="add-to-cart-btn" data-game-id="${
-                          game.id
-                        }">
-                            Add to Cart
-                        </button>
-                        <button class="wishlist-btn" data-game-id="${
-                          game.id
-                        }" aria-label="Add to wishlist">
-                            ♡
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `;
+    }" class="catalog-card-image" loading="lazy" />
+          ${discountHTML}
+        </div>
+        <div class="catalog-card-content">
+          <h3 class="catalog-card-title">${game.title}</h3>
+          <div class="catalog-card-genre">${game.genre}</div>
+          <div class="catalog-card-rating">
+            <span class="stars">${starsHTML}</span>
+            <span class="rating-text">${game.rating}/5</span>
+          </div>
+          <div class="catalog-card-price">
+            <span class="catalog-current-price">$${game.price.toFixed(2)}</span>
+            ${originalPriceHTML}
+          </div>
+          <button class="catalog-add-to-cart-btn" data-game-id="${
+            game.id
+          }">Add to Cart</button>
+        </div>
+      </div>
+    `;
   }
 
   generateStars(rating) {
@@ -358,7 +138,7 @@ class GameVaultManager {
     });
 
     // Add to cart buttons
-    const addToCartBtns = document.querySelectorAll(".add-to-cart-btn");
+    const addToCartBtns = document.querySelectorAll(".catalog-add-to-cart-btn");
     addToCartBtns.forEach((btn) => {
       btn.addEventListener("click", (event) => {
         event.stopPropagation();
@@ -406,8 +186,8 @@ class GameVaultManager {
     localStorage.setItem("pixelVaultCart", JSON.stringify(cart));
 
     // Update header cart count
-    if (window.pixelVaultHeader) {
-      window.pixelVaultHeader.refreshCartCount();
+    if (window.headerManager) {
+      window.headerManager.refreshCartCount();
     }
 
     // Show success notification
@@ -438,36 +218,6 @@ class GameVaultManager {
       : `${game.title} added to wishlist`;
 
     this.showNotification(message, "info");
-  }
-
-  loadMoreGames() {
-    this.currentPage += 1;
-    this.renderGames();
-    this.updateLoadMoreButton();
-  }
-
-  updateResultsCount() {
-    const resultsCount = document.getElementById("results-count");
-    if (resultsCount) {
-      const count = this.filteredGames.length;
-      const text = count === 1 ? "1 game found" : `${count} games found`;
-      resultsCount.textContent = text;
-    }
-  }
-
-  updateLoadMoreButton() {
-    const loadMoreBtn = document.getElementById("load-more-btn");
-    if (loadMoreBtn) {
-      const totalPages = Math.ceil(
-        this.filteredGames.length / this.gamesPerPage
-      );
-      const hasMore = this.currentPage < totalPages;
-
-      loadMoreBtn.disabled = !hasMore;
-      loadMoreBtn.textContent = hasMore
-        ? "Load More Games"
-        : "All Games Loaded";
-    }
   }
 
   showEmptyState(container) {
